@@ -25,7 +25,7 @@ const StyledHeaderMenu = styled.ul`
     align-items: center;
     & > li {
         text-align: center;
-        width: 100px;
+        width: 120px;
         margin-right: 20px;
         flex: 1;
         font-size : 20px;

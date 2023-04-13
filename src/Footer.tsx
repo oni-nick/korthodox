@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const StyledFooter = styled.div`
-    justify-content: space-between;
     background-color: black;
     color: white;
-    padding : 3px 400px;
+    padding-left: 100px;
+    padding-top: 100px;
     height: 200px;
 `;
 

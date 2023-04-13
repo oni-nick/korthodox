@@ -3,44 +3,55 @@ import img01 from './src_assets/01.jpg'
 import img02 from './src_assets/02.jpg'
 
 const StyledH3 = styled.h3 `
-color: black;
-font-size: 48px;
+  color: black;
+  font-size: 48px;
+`;
 
-`
 const StyledPtag = styled.p `
   color: black;
   font-size: 24px;
 `;
 
 const StyledSection = styled.section`
-display: flex;
-padding-left : 100px;
-width: 100%;
-height: 800px;
-& > div {
-  padding 60px 30px;
-}
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  width: 100%;
+  height: 800px;
+  & > div {
+    margin-top: 60px;
+    margin-left: 40px;
+  }
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 
 function Section(){
-
     return (
     <>
         <StyledSection>
           <div>
-            <img src={img01} width={720} alt="desc"/>
+            <img src={img01} width={640} alt="desc"/>
           </div>
           <div>
             <StyledH3>서비스 소개</StyledH3>
-            <StyledPtag>AdsRider는 공유 자전거 광고 플랫폼입니다.</StyledPtag>
+            <StyledPtag>
+              AdsRider는 공유 자전거 광고 플랫폼입니다.
+              AdsRider는 공유 자전거 광고 플랫폼입니다.
+              AdsRider는 공유 자전거 광고 플랫폼입니다.
+              AdsRider는 공유 자전거 광고 플랫폼입니다.
+              AdsRider는 공유 자전거 광고 플랫폼입니다.
+            </StyledPtag>
           </div>
         </StyledSection>
 
 
         <StyledSection>
           <div>
-            <img src={img01} width={720} alt="desc"/>
+            <img src={img01} width={640} alt="desc"/>
           </div>
           <div>
             <StyledH3>코인 리워드 소개</StyledH3>
@@ -51,7 +62,7 @@ function Section(){
 
         <StyledSection>
           <div>
-            <img src={img01} width={720} alt="desc"/>
+            <img src={img01} width={640} alt="desc"/>
           </div>
           <div>
             <StyledH3>광고 효과 소개</StyledH3>
@@ -59,10 +70,9 @@ function Section(){
           </div>
         </StyledSection>
 
-
         <StyledSection>
           <div>
-            <img src={img01} width={720} alt="desc"/>
+            <img src={img01} width={640} alt="desc"/>
           </div>
           <div>
             <StyledH3>코인 거래 기능 소개</StyledH3>

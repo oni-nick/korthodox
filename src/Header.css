@@ -1,10 +1,6 @@
-a{
+a {
     text-decoration: none;
     color: black;
-}
-
-.Header_logout{
-    display : none;
 }
 
 @media screen and (max-width: 918px){
@@ -15,5 +11,4 @@ a{
       flex-direction: column;
     }
   }
-  
-  
+

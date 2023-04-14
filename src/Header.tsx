@@ -1,4 +1,3 @@
-import './Header.css';
 import styled from 'styled-components';
 
 const StyledHeader = styled.nav`
@@ -40,30 +39,35 @@ const Spacer = styled.div`
     flex: 1;
 `;
 
+const Anchor = styled.a`
+    text-decoration: none;
+    color: black;
+`;
+
 const isLogined = false;
 
 function Header(){
     return(
         <StyledHeader>
             <StyledHeaderLogo>
-                <a href="#">AdsRider</a>
+                <Anchor href="/">AdsRider</Anchor>
             </StyledHeaderLogo>
             <Spacer></Spacer>
             <StyledHeaderMenu>
-                <li><a href="#"><p>이용권 구매</p></a></li>
-                <li><a href="#"><p>코인 거래</p></a></li>
-                <li><a href="#"><p>광고 등록</p></a></li>
-                <li><a href="#"><p>입출금</p></a></li>
+                <li><Anchor href="#"><p>이용권 구매</p></Anchor></li>
+                <li><Anchor href="#"><p>코인 거래</p></Anchor></li>
+                <li><Anchor href="/ads"><p>광고 등록</p></Anchor></li>
+                <li><Anchor href="/dw"><p>입출금</p></Anchor></li>
             </StyledHeaderMenu>
             <Spacer></Spacer>
             {
                 !isLogined
                     ?   <div>
-                            <a href="#"><p>로그인</p></a>
+                            <Anchor href="#"><p>로그인</p></Anchor>
                         </div>
                     :   <div>
-                            <a href="#"><p>로그아웃</p></a>
-                            <a href="#"><p>마이페이지</p></a>
+                            <Anchor href="#"><p>로그아웃</p></Anchor>
+                            <Anchor href="#"><p>마이페이지</p></Anchor>
                         </div>
             }
         </StyledHeader>

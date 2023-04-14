@@ -37,6 +37,30 @@ const P = styled.p`
     margin : 30px 20px 50px 20px;
     font-size : 20px;
 `
+// map 함수로 처리하기 위해  json 데이터 만들어봄. 
+const DWHistory = {
+    history : [
+        {
+            id : 1,
+            date : '2023-03-12',
+            amount : '3',
+            isDW : 'Deposit',
+        },
+        {
+            id : 2,
+            date : '2023-03-26',
+            amount : '1',
+            isDW : 'Withdraw',
+        },
+        {
+            id : 3,
+            date : '2023-04-1',
+            amount : '6',
+            isDW : 'Deposit',
+        }
+    ]
+
+}
 
 
 function DWpage(){
@@ -76,7 +100,7 @@ function DWpage(){
                     <Td>2022-11-21</Td>
                     <Td>3 ADS</Td>
                     <Td>입금</Td>
-                </tr>  
+                </tr>
                 <tr>
                     <Td>2022-11-21</Td>
                     <Td>3 ADS</Td>

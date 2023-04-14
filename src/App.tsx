@@ -3,6 +3,7 @@ import Header from './Header';
 import Section from './Section';
 import Footer from './Footer';
 import DWpage from "./component/DWpage";
+import Ads from "./component/Ads"
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
        <Header/>
         <Routes>
           <Route path = "/" element={<Section/>}/>
-          <Route path = "/ads" element={<DWpage/>}/>
+          <Route path = "/dw" element={<DWpage/>}/>
+          <Route path = "/ads" element={<Ads/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

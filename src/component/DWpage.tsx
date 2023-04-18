@@ -7,7 +7,7 @@ const Togglebtn = styled.button`
     margin : 20px 20px 20px 20px;
     width: 200px;
     height : 60px;
-    background: #efe93b;
+    background: gold;
     border-radius: 60px;
     border : none;
     font-size: 24px;
@@ -28,14 +28,20 @@ const DWTable = styled.table`
 `
 const Th = styled.th`
     border : 1px solid black;
+    background-color : gold;
+    padding : 10px;
 `
 const Td = styled.td`
     border : 1px solid black;
     text-align : center;
+    padding : 20px;
+`
+const Tr = styled.tr`
+
 `
 const P = styled.p`
     margin : 30px 20px 50px 20px;
-    font-size : 20px;
+    font-size : 40px;
 `
 // map 함수로 처리하기 위해  json 데이터 만들어봄. 
 const DWHistory = {

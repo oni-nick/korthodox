@@ -6,12 +6,14 @@ const Label = styled.label`
 const Input = styled.input`
     width: 300px;
     height : 50px;
+    font-size : 24px;
+    text-align : center;
+    margin-left : 20px;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid gold;
 `
-
 function CreateAds(){
     return(
         <>
@@ -33,7 +35,7 @@ function CreateAds(){
                 <br/>
                 <div>
                     <Label>광고 기간</Label>
-                    <Input type="text"/>
+                    <Input type="date" value={"2023-04-01"} min={"2023-03-01"}/>
                 </div>
                 <br/>
                 <br/>

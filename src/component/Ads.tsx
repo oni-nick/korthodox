@@ -6,7 +6,7 @@ const ToggleAdsBtn = styled.button`
     margin : 20px 20px 20px 20px;
     width: 200px;
     height : 60px;
-    background: #efe93b;
+    background: gold;
     border-radius: 60px;
     border : none;
     font-size: 24px;
@@ -19,16 +19,19 @@ const AdsDiv = styled.div`
 const AdsTable = styled.table`
     margin : 50px;
     border : 1px solid black;
-    width : 70%;
+    width : 50%;
     border-collapse : collapse;
     border-spacing : 20px 30px;
 `
 const Th = styled.th`
     border : 1px solid black;
+    background-color : gold;
+    padding : 10px;
 `
 const Td = styled.td`
     border : 1px solid black;
     text-align : center;
+    padding : 40px;
 `
 
 function Ads(){

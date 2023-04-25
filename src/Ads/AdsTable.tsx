@@ -50,13 +50,72 @@ interface DataType {
         adsAmount: '5 ADS',
         adsDate: '2023-04-22 ~ 2023-05-5',
     },
+    {
+        key: 1,
+        adsNum: '003',
+        adsName: '쿠팡 이츠',
+        adsAmount: '5 ADS',
+        adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+    {
+      key: 1,
+      adsNum: '003',
+      adsName: '쿠팡 이츠',
+      adsAmount: '5 ADS',
+      adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+    {
+      key: 1,
+      adsNum: '003',
+      adsName: '쿠팡 이츠',
+      adsAmount: '5 ADS',
+      adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+    {
+      key: 1,
+      adsNum: '003',
+      adsName: '쿠팡 이츠',
+      adsAmount: '5 ADS',
+      adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+    {
+      key: 1,
+      adsNum: '003',
+      adsName: '쿠팡 이츠',
+      adsAmount: '5 ADS',
+      adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+    {
+      key: 1,
+      adsNum: '003',
+      adsName: '쿠팡 이츠',
+      adsAmount: '5 ADS',
+      adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+    {
+      key: 1,
+      adsNum: '003',
+      adsName: '쿠팡 이츠',
+      adsAmount: '5 ADS',
+      adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+    {
+      key: 1,
+      adsNum: '003',
+      adsName: '쿠팡 이츠',
+      adsAmount: '5 ADS',
+      adsDate: '2023-04-22 ~ 2023-05-5',
+    },
+  
+
+    
  
   ];
 
 function AdsTable(){
     return(
         <>
-            <Divider>광고 내역</Divider>
+            <Divider>광고 목록</Divider>
             <Table columns={columns} dataSource={data} size="large" />
         </>
     );

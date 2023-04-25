@@ -23,6 +23,8 @@ export const P2 = styled.p`
 
 export const DivWithdraw = styled.div`
     margin : 50px 20px 10px 20px;
+    display : flex;
+    flex-direction : column;
 `
 export const DivDeposit = styled.div`
     margin : 30px 20px 10px 20px;

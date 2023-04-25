@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PlusOutlined } from '@ant-design/icons';
 import {
   Button,
@@ -17,7 +18,7 @@ import {
 import React, { useState } from 'react';
 
 
-function CreateAds_Ant(){
+function CreateAds(){
     
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
@@ -33,13 +34,16 @@ const normFile = (e: any) => {
   const [componentDisabled, setComponentDisabled] = useState<boolean>(true);
 
   return (
-    <>
+    <div>
       <Form
         labelCol={{ span: 42 }}
         wrapperCol={{ span: 12 }}
         layout="horizontal"
         style={{ maxWidth: 600,
-                marginTop : 30,
+                marginTop : 100,
+                marginRight : 100,
+                marginBottom : 100,
+                marginLeft : 600,
         }}
       >
         <Form.Item label="광고 이름 ">
@@ -67,14 +71,14 @@ const normFile = (e: any) => {
           </Upload>
         </Form.Item>
 
-        <Form.Item label="">
-          <Button>등록하기</Button>
-        </Form.Item>
+        <Link to="/ads" style={{ marginLeft: 200 }}><Button type='default'>취소하기</Button></Link>
+        <Button style={{ marginLeft: 10 }}type='primary'>등록하기</Button>
+        
         
       </Form>
-    </>
+    </div>
   );
 };
 
 
-export default CreateAds_Ant;
+export default CreateAds;

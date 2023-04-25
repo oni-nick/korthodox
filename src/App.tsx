@@ -4,19 +4,28 @@ import Section from './Main/Section';
 import Footer from './Main/Footer';
 import Dw from "./Dw";
 import Ads from "./Ads"
+import CreateAds from './Ads/CreateAds'
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  min-height : calc(100vh - 300px);
+  min-width : 100vh;
+`
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-       <Header/>
-        <Routes>
-          <Route path = "/" element={<Section/>}/>
-          <Route path = "/dw" element={<Dw/>}/>
-          <Route path = "/ads" element={<Ads/>}/>
-        </Routes>
-        <Footer/>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Wrapper>
+            <Header/>
+            <Routes>
+              <Route path = "/" element={<Section/>}/>
+              <Route path = "/dw" element={<Dw/>}/>
+              <Route path = "/ads" element={<Ads/>}/>
+              <Route path = "/ads/write" element={<CreateAds/>}/>
+            </Routes>
+          </Wrapper>
+          <Footer/>
+        </BrowserRouter>
     </div>
   );
 }

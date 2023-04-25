@@ -41,9 +41,9 @@ function DWpage(){
     <>
         <DWdiv>
             <Radio.Group onChange={toggleDeposit} defaultValue="a" size="large">
-                <Radio.Button value="a">입금</Radio.Button>
-                <Radio.Button value="b">출금</Radio.Button>
-                <Radio.Button value="c">입출금내역</Radio.Button>
+                <Radio.Button value="a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Radio.Button>
+                <Radio.Button value="b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Radio.Button>
+                <Radio.Button value="c">입출금 내역</Radio.Button>
             </Radio.Group>
             {returnDeposit()}
         </DWdiv>

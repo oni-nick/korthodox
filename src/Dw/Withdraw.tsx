@@ -1,16 +1,4 @@
-import styled from "styled-components";
-
-const Label = styled.label`
-    font-size : 24px;
-`
-const Input = styled.input`
-    width: 300px;
-    height : 50px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid gold;
-`
+import {Label, Input } from "./Styles"
 
 function Withdraw(){
     return(

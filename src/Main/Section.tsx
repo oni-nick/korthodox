@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import img01 from './src_assets/01.jpg'
-import img02 from './src_assets/02.jpg'
+import img01 from '../src_assets/01.jpg'
+import img02 from '../src_assets/02.jpg'
 
 type DescriptionType = {
   image: string;

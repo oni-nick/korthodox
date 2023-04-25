@@ -1,35 +1,7 @@
 import { useState } from "react";
-import styled from "styled-components";
+import {ToggleAdsBtn, AdsDiv, AdsTable, Th, Td} from "./Styles"
 import CreateAds from "./CreateAds";
-
-const ToggleAdsBtn = styled.button`
-    margin : 20px 20px 20px 20px;
-    width: 200px;
-    height : 60px;
-    background: #efe93b;
-    border-radius: 60px;
-    border : none;
-    font-size: 24px;
-`
-const AdsDiv = styled.div`
-    display: flex;
-    flex-direction : column;
-    align-items: center;
-`
-const AdsTable = styled.table`
-    margin : 50px;
-    border : 1px solid black;
-    width : 70%;
-    border-collapse : collapse;
-    border-spacing : 20px 30px;
-`
-const Th = styled.th`
-    border : 1px solid black;
-`
-const Td = styled.td`
-    border : 1px solid black;
-    text-align : center;
-`
+import { Switch, } from 'antd';
 
 function Ads(){
 
@@ -41,6 +13,7 @@ function Ads(){
 
     return (
         <AdsDiv>
+            <Switch style={{width : '100px'}} checkedChildren="입금" unCheckedChildren="출금" defaultChecked />
             <ToggleAdsBtn onClick={ToggleAds}>{!isAds ? '광고 등록' : '돌아가기'}</ToggleAdsBtn>
 
             {

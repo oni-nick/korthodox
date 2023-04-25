@@ -30,7 +30,8 @@ const StyledHeaderMenu = styled.ul`
         font-size : 20px;
     }
     & > li:hover{
-        background-color: #efe93b;
+        background-color: gold;
+        opacity : 0.7;
         border-radius: 12px;
     }
 `;

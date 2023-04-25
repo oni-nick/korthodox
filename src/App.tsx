@@ -1,8 +1,9 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Header from './Header';
-import Section from './Section';
-import Footer from './Footer';
-import DWpage from "./component/DWpage";
+import Header from './Main/Header';
+import Section from './Main/Section';
+import Footer from './Main/Footer';
+import Dw from "./Dw";
+import Ads from "./Ads"
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
        <Header/>
         <Routes>
           <Route path = "/" element={<Section/>}/>
-          <Route path = "/ads" element={<DWpage/>}/>
+          <Route path = "/dw" element={<Dw/>}/>
+          <Route path = "/ads" element={<Ads/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

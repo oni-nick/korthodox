@@ -1,42 +1,8 @@
 import { useState } from "react";
-import styled from 'styled-components'
+import {Togglebtn, DWdiv, DWTable, Th, Td, P } from "./Styles"
 import Deposit from "./Deposit";
 import Withdraw from "./Withdraw";
 
-const Togglebtn = styled.button`
-    margin : 20px 20px 20px 20px;
-    width: 200px;
-    height : 60px;
-    background: #efe93b;
-    border-radius: 60px;
-    border : none;
-    font-size: 24px;
-`
-
-const DWdiv = styled.div`
-    display : flex;
-    align-items : center;
-    flex-direction : column;
-
-`
-const DWTable = styled.table`
-    margin : 50px;
-    border : 1px solid black;
-    width : 50%;
-    border-collapse : collapse;
-    border-spacing : 20px 30px;
-`
-const Th = styled.th`
-    border : 1px solid black;
-`
-const Td = styled.td`
-    border : 1px solid black;
-    text-align : center;
-`
-const P = styled.p`
-    margin : 30px 20px 50px 20px;
-    font-size : 20px;
-`
 // map 함수로 처리하기 위해  json 데이터 만들어봄. 
 const DWHistory = {
     history : [

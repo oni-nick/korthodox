@@ -1,79 +1,54 @@
 import { useState } from "react";
-import {Togglebtn, DWdiv, DWTable, Th, Td, P } from "./Styles"
+import { DWdiv } from "./Styles"
 import Deposit from "./Deposit";
+import DwTable from "./DwTable";
 import Withdraw from "./Withdraw";
-
-// map 함수로 처리하기 위해  json 데이터 만들어봄. 
-const DWHistory = {
-    history : [
-        {
-            id : 1,
-            date : '2023-03-12',
-            amount : '3',
-            isDW : 'Deposit',
-        },
-        {
-            id : 2,
-            date : '2023-03-26',
-            amount : '1',
-            isDW : 'Withdraw',
-        },
-        {
-            id : 3,
-            date : '2023-04-1',
-            amount : '6',
-            isDW : 'Deposit',
-        }
-    ]
-
-}
+import { Radio } from 'antd';
+import type { RadioChangeEvent } from 'antd';
 
 
 function DWpage(){
-    const [isDepoist, setDeposit] = useState(true);
+    const [isDepoist, setDeposit] = useState('a');
 
-    function toggleDeposit(){
-        setDeposit(!isDepoist)
+    function toggleDeposit(e: RadioChangeEvent){
+        switch(e.target.value){
+            case 'a': 
+                setDeposit('a');
+                break;
+            case 'b':
+                setDeposit('b');
+                break;
+            case 'c':
+                setDeposit('c');
+                break;
+            }
+        }
+    function returnDeposit(){
+        switch(isDepoist){
+            case 'a': 
+                return <Deposit/>
+                break;
+            case 'b':
+                return <Withdraw/>
+                break;
+            case 'c':
+                return <DwTable/>
+                break;
+            }
     }
-
-    return(
     
+    return(
     <>
         <DWdiv>
-            <Togglebtn onClick={toggleDeposit}> 
-                {isDepoist ? '입금' : '출금'}
-            </Togglebtn>         
-            <P> { isDepoist ? '입금' : '출금' } 페이지</P>
-            {isDepoist
-                ?
-                <Deposit/>
-                :
-                <Withdraw/>
-            }
-            <h1 style={{ margin : '100px 0px 20px 0px'}}>입출금 이력 조회</h1>
-            <DWTable>
-                <tr>
-                    <Th>날짜</Th>
-                    <Th>금액</Th>
-                    <Th>입/출금</Th>
-                </tr>
-                <tr>
-                    <Td>2022-11-21</Td>
-                    <Td>3 ADS</Td>
-                    <Td>입금</Td>
-                </tr>
-                <tr>
-                    <Td>2022-11-21</Td>
-                    <Td>3 ADS</Td>
-                    <Td>입금</Td>
-                </tr>
-                <tr>
-                    <Td>2022-11-21</Td>
-                    <Td>3 ADS</Td>
-                    <Td>입금</Td>
-                </tr>
-            </DWTable>
+            <Radio.Group onChange={toggleDeposit} defaultValue="a" size="large">
+                <Radio.Button value="a">입금</Radio.Button>
+                <Radio.Button value="b">출금</Radio.Button>
+                <Radio.Button value="c">입출금내역</Radio.Button>
+            </Radio.Group>
+            {returnDeposit()}
         </DWdiv>
+
+        
     </>
     );
 }

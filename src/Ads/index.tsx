@@ -1,57 +1,30 @@
 import { useState } from "react";
-import {ToggleAdsBtn, AdsDiv, AdsTable, Th, Td} from "./Styles"
+import { Radio } from 'antd';
 import CreateAds from "./CreateAds";
-import { Switch, } from 'antd';
-
-
+import AdsTable from "./AdsTable";
+import { AdsDiv } from "./Styles"
 function Ads(){
 
-    const [isAds, setAds] = useState(false);
-
-    function ToggleAds(){
-        setAds(!isAds);
+    const [isPage, setPage] = useState(true);
+    
+    const radioChanged = (e : any) => {
+        console.log(e.value);
+        console.log(isPage);
+        // value 어떻게 주고 받는지 모르겟음. 일단 bool 타입으로 구현.
+        setPage(!isPage)
     }
 
     return (
         <AdsDiv>
-            <Switch style={{width : '100px'}} checkedChildren="입금" unCheckedChildren="출금" defaultChecked />
-            <ToggleAdsBtn onClick={ToggleAds}>{!isAds ? '광고 등록' : '돌아가기'}</ToggleAdsBtn>
+             <Radio.Group onChange={radioChanged} defaultValue="a" size="large">
+                <Radio.Button value="a" >광고 등록</Radio.Button>
+                <Radio.Button value="b">광고 내역</Radio.Button>
+            </Radio.Group>
 
             {
-                isAds 
+                isPage 
                 ? <CreateAds/>
-                : <>
-                    <h1 style={{marginTop: '50px'}}>
-                        광고 이력 조회
-                    </h1>
-                    
-                    <AdsTable>
-                        <tr>
-                            <Th>광고 번호</Th>
-                            <Th>광고 이름</Th>
-                            <Th>총 보상</Th>
-                            <Th>광고 기간</Th>
-                        </tr>
-                        <tr>
-                            <Td>0001</Td>
-                            <Td>인체공학 마우스</Td>
-                            <Td>3 ADS</Td>
-                            <Td>2023.03.12 ~ 2023.03.20</Td>
-                        </tr>
-                        <tr>
-                            <Td>0001</Td>
-                            <Td>인체공학 마우스</Td>
-                            <Td>3 ADS</Td>
-                            <Td>2023.03.12 ~ 2023.03.20</Td>
-                        </tr>
-                        <tr>
-                            <Td>0001</Td>
-                            <Td>인체공학 마우스</Td>
-                            <Td>3 ADS</Td>
-                            <Td>2023.03.12 ~ 2023.03.20</Td>
-                        </tr>
-                    </AdsTable>
-                </>
+                : <AdsTable/>
             }
             
         </AdsDiv>

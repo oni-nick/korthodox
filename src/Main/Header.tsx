@@ -30,9 +30,11 @@ const StyledHeaderMenu = styled.ul`
         font-size : 20px;
     }
     & > li:hover{
-        background-color: gold;
         opacity : 0.7;
         border-radius: 12px;
+        text-decoration : underline;
+        color :#a6cef4;
+        background-color : #a6cef4; 
     }
 `;
 

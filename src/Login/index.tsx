@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { Button, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { UserInfo } from '../context/user';
+import { UserInfo, useUserDispatch } from '../context/user';
 
 const LoginForm = styled(Form)`
     margin-left: auto;
@@ -31,6 +31,7 @@ const tailLayout = {
 const Login = () => {
     const [form] = Form.useForm();
     const [errMessage, setErrMessage] = useState('');
+    const dispatch = useUserDispatch();
     const navigate = useNavigate();
 
     const onReset = () => {
@@ -43,7 +44,7 @@ const Login = () => {
                 email: values.email,
                 password: values.pw,
             });
-            console.log(user);
+            dispatch({ type: 'LOG_IN', data: user.data });
             navigate('/')
         } catch (e) {
             const axiosError = e as AxiosError;

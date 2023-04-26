@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import axios from 'axios';
 import { Button, Form, Input } from 'antd';
 
 const LoginForm = styled(Form)`
@@ -22,8 +23,12 @@ const tailLayout = {
 
 const Login = () => {
     const [form] = Form.useForm();
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
         console.log(values);
+        await axios.post('/api/user/login', {
+            email: values.email,
+            password: values.password,
+        });
     };
 
     return (
@@ -33,7 +38,7 @@ const Login = () => {
             form={form}
             name="loginForm"
         >
-            <Form.Item name="id" label="id" rules={[{required: true}]}>
+            <Form.Item name="email" label="email" rules={[{required: true}]}>
                 <Input />
             </Form.Item>
             <Form.Item name="pw" label="pw" rules={[{required: true}]}>

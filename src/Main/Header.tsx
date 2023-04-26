@@ -1,5 +1,6 @@
 import { UserOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
+import { useUserState } from '../context/user';
 import adsrider from '../src_assets/adsrider.png'
 
 const StyledHeader = styled.nav`
@@ -49,9 +50,9 @@ const Anchor = styled.a`
     color: black;
 `;
 
-const isLogined = false;
-
 function Header(){
+    const user = useUserState();
+
     return(
         <StyledHeader>
             <img src={adsrider} alt='로고' width={100} height={100}/>
@@ -67,12 +68,12 @@ function Header(){
             </StyledHeaderMenu>
             <Spacer></Spacer>
             {
-                !isLogined
+                !user.email
                     ?   <div>
                             <Anchor href="/login"><p><UserOutlined />로그인</p></Anchor>
                         </div>
                     :   <div>
-                            <Anchor href="#"><p>로그아웃</p></Anchor>
+                            <Anchor><p>로그아웃</p></Anchor>
                             <Anchor href="#"><p>마이페이지</p></Anchor>
                         </div>
             }

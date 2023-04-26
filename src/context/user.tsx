@@ -54,3 +54,14 @@ export const UserProvider = ({ children }: {children: React.ReactNode}) => {
     );
 };
 
+export const useUserState = () => {
+    const state = useContext(UserContext);
+    if (!state) throw new Error('Cannot find UserContext');
+    return state;
+};
+
+export function useUserDispatch() {
+    const dispatch = useContext(UserDispatchContext);
+    if (!dispatch) throw new Error('Cannot find UserDispatchContext');
+    return dispatch;
+};

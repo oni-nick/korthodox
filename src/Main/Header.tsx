@@ -36,7 +36,7 @@ const StyledHeaderMenu = styled.ul`
         border-radius: 12px;
         text-decoration : underline;
         color :#a6cef4;
-        background-color : #a6cef4; 
+        background-color : #a6cef4;
     }
 `;
 
@@ -69,7 +69,7 @@ function Header(){
             {
                 !isLogined
                     ?   <div>
-                            <Anchor href="#"><p><UserOutlined />로그인</p></Anchor>
+                            <Anchor href="/login"><p><UserOutlined />로그인</p></Anchor>
                         </div>
                     :   <div>
                             <Anchor href="#"><p>로그아웃</p></Anchor>

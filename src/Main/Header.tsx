@@ -1,6 +1,7 @@
 import { UserOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import styled from 'styled-components';
-import { useUserState } from '../context/user';
+import { useUserDispatch, useUserState } from '../context/user';
 import adsrider from '../src_assets/adsrider.png'
 
 const StyledHeader = styled.nav`
@@ -52,6 +53,12 @@ const Anchor = styled.a`
 
 function Header(){
     const user = useUserState();
+    const dispatch = useUserDispatch();
+
+    const doLogOut = () => {
+        dispatch({ type: 'LOG_OUT' });
+        axios.get('/api/user/logout');
+    };
 
     return(
         <StyledHeader>
@@ -67,16 +74,18 @@ function Header(){
                 <li><Anchor href="/dw"><p>입출금</p></Anchor></li>
             </StyledHeaderMenu>
             <Spacer></Spacer>
-            {
-                !user.email
-                    ?   <div>
-                            <Anchor href="/login"><p><UserOutlined />로그인</p></Anchor>
-                        </div>
-                    :   <div>
-                            <Anchor><p>로그아웃</p></Anchor>
-                            <Anchor href="#"><p>마이페이지</p></Anchor>
-                        </div>
-            }
+            <StyledHeaderMenu>
+                {
+                    !user.email
+                        ?   <li>
+                                <Anchor href="/login"><p><UserOutlined />로그인</p></Anchor>
+                            </li>
+                        :   <>
+                                <li><Anchor onClick={doLogOut}><p>로그아웃</p></Anchor></li>
+                                <li><Anchor href="#"><p>마이페이지</p></Anchor></li>
+                            </>
+                }
+            </StyledHeaderMenu>
         </StyledHeader>
   );
 }

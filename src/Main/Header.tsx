@@ -1,5 +1,7 @@
 import { UserOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import styled from 'styled-components';
+import { useUserDispatch, useUserState } from '../context/user';
 import adsrider from '../src_assets/adsrider.png'
 
 const StyledHeader = styled.nav`
@@ -36,7 +38,7 @@ const StyledHeaderMenu = styled.ul`
         border-radius: 12px;
         text-decoration : underline;
         color :#a6cef4;
-        background-color : #a6cef4; 
+        background-color : #a6cef4;
     }
 `;
 
@@ -49,9 +51,15 @@ const Anchor = styled.a`
     color: black;
 `;
 
-const isLogined = false;
-
 function Header(){
+    const user = useUserState();
+    const dispatch = useUserDispatch();
+
+    const doLogOut = () => {
+        dispatch({ type: 'LOG_OUT' });
+        axios.get('/api/user/logout');
+    };
+
     return(
         <StyledHeader>
             <img src={adsrider} alt='로고' width={100} height={100}/>
@@ -66,16 +74,18 @@ function Header(){
                 <li><Anchor href="/dw"><p>입출금</p></Anchor></li>
             </StyledHeaderMenu>
             <Spacer></Spacer>
-            {
-                !isLogined
-                    ?   <div>
-                            <Anchor href="#"><p><UserOutlined />로그인</p></Anchor>
-                        </div>
-                    :   <div>
-                            <Anchor href="#"><p>로그아웃</p></Anchor>
-                            <Anchor href="#"><p>마이페이지</p></Anchor>
-                        </div>
-            }
+            <StyledHeaderMenu>
+                {
+                    !user.email
+                        ?   <li>
+                                <Anchor href="/login"><p><UserOutlined />로그인</p></Anchor>
+                            </li>
+                        :   <>
+                                <li><Anchor onClick={doLogOut}><p>로그아웃</p></Anchor></li>
+                                <li><Anchor href="#"><p>마이페이지</p></Anchor></li>
+                            </>
+                }
+            </StyledHeaderMenu>
         </StyledHeader>
   );
 }

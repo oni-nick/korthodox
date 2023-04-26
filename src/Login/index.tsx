@@ -3,13 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { Button, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
-export type UserInfo = {
-    email: string;
-    level: string,
-    address: string,
-    join_time: Date,
-};
+import { UserInfo } from '../context/user';
 
 const LoginForm = styled(Form)`
     margin-left: auto;

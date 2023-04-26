@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import axios, { AxiosError } from 'axios';
 import { Button, Form, Input } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { UserInfo, useUserDispatch } from '../context/user';
 
@@ -17,6 +17,9 @@ const ButtonWrapper = styled.div`
 `;
 const WariningMessage = styled.p`
     color: red;
+    text-align: center;
+`;
+const Title = styled.h1`
     text-align: center;
 `;
 
@@ -45,10 +48,10 @@ const Login = () => {
                 password: values.pw,
             });
             dispatch({ type: 'LOG_IN', data: user.data });
-            navigate('/')
+            navigate('/');
         } catch (e) {
             const axiosError = e as AxiosError;
-            if (axiosError.status === 400) {
+            if (axiosError.response?.status === 400) {
                 setErrMessage('잘못된 id 혹은 password 입니다.');
             } else {
                 setErrMessage('예기치 못한 에러가 발생하였습니다 잠시후 시도해주세요.');
@@ -59,6 +62,7 @@ const Login = () => {
 
     return (
         <>
+            <Title>로그인</Title>
             <LoginForm
                 {...layout}
                 onFinish={onFinish}
@@ -74,7 +78,7 @@ const Login = () => {
                 <Form.Item {...tailLayout}>
                     <ButtonWrapper>
                         <Button type="primary" htmlType="submit">로그인</Button>
-                        <Button htmlType="button">회원가입</Button>
+                        <Link to="/register"><Button htmlType="button">회원가입</Button></Link>
                     </ButtonWrapper>
                 </Form.Item>
             </LoginForm>

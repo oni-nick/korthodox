@@ -2,13 +2,13 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { UserInfo, useUserDispatch, useUserState } from './context/user';
+import { UserInfo, useUserDispatch } from './context/user';
 import Header from './Main/Header';
 import Section from './Main/Section';
 import Footer from './Main/Footer';
 import Dw from './Dw';
 import Ads from './Ads'
-import CreateAds from './Ads/CreateAds'
+import CreateAds from './Ads/write'
 import Login from './Login';
 import Register from './Register';
 

@@ -1,123 +1,67 @@
 import { Table, Divider } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import { Image } from 'antd';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-interface DataType {
-    key: React.Key;
-    adsNum: string;
-    adsName: string;
-    adsAmount: string;
-    adsDate: string;
-  }
-  
-  const columns: ColumnsType<DataType> = [
-    {
-      title: '광고 번호',
-      dataIndex: 'adsNum',
-    },
-    {
-      title: '광고 이름',
-      dataIndex: 'adsName',
-    },
-    {
-      title: '광고 금액',
-      dataIndex: 'adsAmount',
-    },
-    {
-        title: '광고 기간',
-        dataIndex: 'adsDate',
-      },
-  ];
-  
-  const data: DataType[] = [
-    {
-        key: 1,
-        adsNum: '001',
-        adsName: '배달의 민족',
-        adsAmount: '3 ADS',
-        adsDate: '2023-04-22 ~ 2023-04-25',
-    },
-    {
-        key: 1,
-        adsNum: '002',
-        adsName: '완충e',
-        adsAmount: '1 ADS',
-        adsDate: '2023-04-22 ~ 2023-06-25',
-    },
-    {
-        key: 1,
-        adsNum: '003',
-        adsName: '쿠팡 이츠',
-        adsAmount: '5 ADS',
-        adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-        key: 1,
-        adsNum: '003',
-        adsName: '쿠팡 이츠',
-        adsAmount: '5 ADS',
-        adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-      key: 1,
-      adsNum: '003',
-      adsName: '쿠팡 이츠',
-      adsAmount: '5 ADS',
-      adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-      key: 1,
-      adsNum: '003',
-      adsName: '쿠팡 이츠',
-      adsAmount: '5 ADS',
-      adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-      key: 1,
-      adsNum: '003',
-      adsName: '쿠팡 이츠',
-      adsAmount: '5 ADS',
-      adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-      key: 1,
-      adsNum: '003',
-      adsName: '쿠팡 이츠',
-      adsAmount: '5 ADS',
-      adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-      key: 1,
-      adsNum: '003',
-      adsName: '쿠팡 이츠',
-      adsAmount: '5 ADS',
-      adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-      key: 1,
-      adsNum: '003',
-      adsName: '쿠팡 이츠',
-      adsAmount: '5 ADS',
-      adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-    {
-      key: 1,
-      adsNum: '003',
-      adsName: '쿠팡 이츠',
-      adsAmount: '5 ADS',
-      adsDate: '2023-04-22 ~ 2023-05-5',
-    },
-  
+interface Ads {
+  id: number;
+  title: string;
+  subtitle: string;
+  image_id: number;
+  reward: number;
+  start_date: Date;
+  end_date: Date;
+  // user_email: string;
+}
 
-    
- 
-  ];
+const columns = [
+  {
+    title: 'Image',
+    dataIndex: 'image_id',
+    key: 'image_id',
+    render: (_: any, row: Ads) =>
+      <Image
+        width={100}
+        src={'/api/image/' + row.image_id}
+      />,
+  },
+  {
+    title: 'Id',
+    dataIndex: 'id',
+    key: 'id',
+  },
+  {
+    title: 'Title',
+    dataIndex: 'title',
+    key: 'title',
+  },
+  {
+    title: 'SubTitle',
+    dataIndex: 'subtitle',
+    key: 'subtitle',
+  },
+  {
+    title: 'Reward',
+    dataIndex: 'reward',
+    key: 'reward',
+  },
+];
 
 function AdsTable(){
-    return(
-        <>
-            <Divider>광고 목록</Divider>
-            <Table columns={columns} dataSource={data} size="large" />
-        </>
-    );
+  const [ads, setAds] = useState<Ads[]>([]);
+
+  useEffect(() => {
+    axios.get<Ads[]>('/api/ads')
+      .then((res) => {
+        setAds(res.data);
+      });
+  }, [])
+
+  return(
+    <>
+      <Divider>광고 목록</Divider>
+      <Table columns={columns} dataSource={ads} size="large" />
+    </>
+  );
 }
 export default AdsTable;

@@ -1,3 +1,4 @@
+import { Form } from "antd"
 import styled from "styled-components"
 
 export {}
@@ -38,3 +39,14 @@ export const Input = styled.input`
     border-right: none;
     border-bottom: 1px solid gold;
 `
+
+export const CreateAdsFormWrapper = styled.div`
+    display: flex;
+    margin-bottom: 50px;
+`;
+
+export const CreateAdsForm = styled(Form)`
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+`;

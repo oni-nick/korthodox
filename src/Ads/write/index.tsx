@@ -10,7 +10,7 @@ import {
   Upload,
 } from 'antd';
 import axios from 'axios';
-import { CreateAdsForm, CreateAdsFormWrapper } from './Styles';
+import { CreateAdsForm, CreateAdsFormWrapper } from '../Styles';
 import { RcFile } from "antd/es/upload";
 
 function CreateAds(){

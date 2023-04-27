@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PlusOutlined } from '@ant-design/icons';
 import {
   Button,
@@ -16,6 +16,7 @@ import { RcFile } from "antd/es/upload";
 function CreateAds(){
   const { RangePicker } = DatePicker;
   const { TextArea } = Input;
+  const navigate = useNavigate();
 
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -39,6 +40,7 @@ function CreateAds(){
     };
 
     await axios.post('/api/ads', adsData);
+    navigate('/ads');
   };
 
   const beforeUpload = (file: RcFile) => {

@@ -7,6 +7,7 @@ export const AdsDiv = styled.div`
     display: flex;
     flex-direction : column;
     align-items: center;
+    margin-bottom : 100px;
 `
 export const AdsTableStyle = styled.table`
     margin : 50px;
@@ -50,3 +51,9 @@ export const CreateAdsForm = styled(Form)`
     margin-left: auto;
     margin-right: auto;
 `;
+export const P = styled.p`
+    width: 300px;
+    margin : 10px 0px 40px 0px;
+    font-size : 20px;
+    text-align : center;
+`

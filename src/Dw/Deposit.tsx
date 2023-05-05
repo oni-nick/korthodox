@@ -1,5 +1,5 @@
-import {P, P2, DivDeposit} from "./Styles"
-import { Button, Checkbox, Form, Input } from 'antd';
+import {P, DivDeposit} from "./Styles"
+import { Button, Input } from 'antd';
 
 function Deposit(){
 

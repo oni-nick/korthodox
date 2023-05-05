@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input, Space } from 'antd';
+import { Button, Checkbox, Input } from 'antd';
 import { P, DivWithdraw, P2 } from "./Styles"
 import Withdraw_Btn from "./Withdraw_Btn"
 function Withdraw(){
@@ -15,9 +15,8 @@ function Withdraw(){
         <DivWithdraw>
             
             <div style={{ marginBottom : '30px'}}>
-                출금주소
-                <Input style={{display : 'inline-block', width : '200px', marginLeft : '5px'}} id="Dadress" name="Dadress" value="O5L2uxhoH92wAQg1" readOnly/>
-                <Button style={{display : 'inline-block', marginLeft : '3px'}} type="default">복사하기</Button>
+                출금주소:&nbsp;
+                <Input style={{display : 'inline-block', width : '200px', marginLeft : '5px'}} id="Dadress" name="Dadress"/>
             </div>
             <Withdraw_Btn/>
             <div>

@@ -1,55 +1,9 @@
 import { UserOutlined } from '@ant-design/icons';
 import axios from 'axios';
-import styled from 'styled-components';
+import { StyledHeader, StyledHeaderLogo, StyledHeaderMenu, Spacer, Anchor } from "./Styles"
 import { useUserDispatch, useUserState } from '../context/user';
 import adsrider from '../src_assets/adsrider.png'
 
-const StyledHeader = styled.nav`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    /* 좌우길이 */
-    padding: 0 40px;
-    width: calc(100% - 40px * 2);
-    /* 상단고정 */
-    position: sticky;
-    top: 0;
-`;
-
-const StyledHeaderLogo = styled.div`
-    font-size: 28px;
-`;
-
-const StyledHeaderMenu = styled.ul`
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-    & > li {
-        text-align: center;
-        width: 120px;
-        margin-right: 20px;
-        flex: 1;
-        font-size : 20px;
-    }
-    & > li:hover{
-        opacity : 0.7;
-        border-radius: 12px;
-        text-decoration : underline;
-        color :#a6cef4;
-        background-color : #a6cef4;
-    }
-`;
-
-const Spacer = styled.div`
-    flex: 1;
-`;
-
-const Anchor = styled.a`
-    text-decoration: none;
-    color: black;
-`;
 
 function Header(){
     const user = useUserState();

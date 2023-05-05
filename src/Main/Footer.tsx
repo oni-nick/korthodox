@@ -1,12 +1,5 @@
-import styled from "styled-components";
+import {StyledFooter} from "./Styles"
 
-const StyledFooter = styled.div`
-    background-color: black;
-    color: white;
-    padding-left: 100px;
-    padding-top: 100px;
-    height: 200px;
-`;
 
 function Footer() {
     return (

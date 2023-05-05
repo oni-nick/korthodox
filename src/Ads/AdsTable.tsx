@@ -2,6 +2,7 @@ import { Table, Divider } from 'antd';
 import { Image } from 'antd';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { P } from "./Styles"
 
 interface Ads {
   id: number;
@@ -59,7 +60,7 @@ function AdsTable(){
 
   return(
     <>
-      <Divider>광고 목록</Divider>
+      <P>광고 목록</P>
       <Table columns={columns} dataSource={ads} size="large" />
     </>
   );

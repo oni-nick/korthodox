@@ -5,10 +5,12 @@ import DwTable from "./DwTable";
 import Withdraw from "./Withdraw";
 import { Radio } from 'antd';
 import type { RadioChangeEvent } from 'antd';
+import { useUserState } from "../context/user";
 
 
 function DWpage(){
     const [isDepoist, setDeposit] = useState('a');
+    const user = useUserState();
 
     function toggleDeposit(e: RadioChangeEvent){
         switch(e.target.value){

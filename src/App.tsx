@@ -11,6 +11,9 @@ import Ads from './Ads'
 import CreateAds from './Ads/write'
 import Login from './Login';
 import Register from './Register';
+import Coin from './Coin'
+import Ticket from './Ticket'
+import Mypage from './Main/Mypage'
 
 const Wrapper = styled.div`
   min-height : calc(100vh - 300px);
@@ -36,9 +39,12 @@ function App() {
               <Route path = "/" element={<Section/>}/>
               <Route path = "/dw" element={<Dw/>}/>
               <Route path = "/ads" element={<Ads/>}/>
+              <Route path = "/coin" element={<Coin/>}/>
+              <Route path = "/ticket" element={<Ticket/>}/>
               <Route path = "/ads/write" element={<CreateAds/>}/>
               <Route path = "/login" element={<Login/>}/>
               <Route path = "/Register" element={<Register/>}/>
+              <Route path = "/mypage" element={<Mypage/>}/>
             </Routes>
           </Wrapper>
           <Footer/>

@@ -89,3 +89,9 @@ padding-left: 100px;
 padding-top: 100px;
 height: 200px;
 `;
+
+export const Div = styled.div`
+  display : flex;
+  align-items : center;
+  flex-direction : column;
+`

@@ -22,8 +22,8 @@ function Header(){
             </StyledHeaderLogo>
             <Spacer></Spacer>
             <StyledHeaderMenu>
-                <li><Anchor href="#"><p>이용권 구매</p></Anchor></li>
-                <li><Anchor href="#"><p>코인 거래</p></Anchor></li>
+                <li><Anchor href="/ticket"><p>이용권 구매</p></Anchor></li>
+                <li><Anchor href="/coin"><p>코인 거래</p></Anchor></li>
                 <li><Anchor href="/ads"><p>광고 기능</p></Anchor></li>
                 <li><Anchor href="/dw"><p>입출금</p></Anchor></li>
             </StyledHeaderMenu>
@@ -36,7 +36,7 @@ function Header(){
                             </li>
                         :   <>
                                 <li><Anchor onClick={doLogOut}><p>로그아웃</p></Anchor></li>
-                                <li><Anchor href="#"><p>마이페이지</p></Anchor></li>
+                                <li><Anchor href="/mypage"><p>마이페이지</p></Anchor></li>
                             </>
                 }
             </StyledHeaderMenu>

@@ -8,7 +8,7 @@ import type { RadioChangeEvent } from 'antd';
 import { useUserState } from "../context/user";
 
 
-function DWpage(){
+function Dw(){
     const [isDepoist, setDeposit] = useState('a');
     const user = useUserState();
 
@@ -62,4 +62,4 @@ function DWpage(){
     );
 }
 
-export default DWpage;
+export default Dw;

@@ -20,6 +20,17 @@ export const P2 = styled.p`
     color : black;
     text-align:center;
 `
+export const P3 = styled.p`
+    font-size : 18px;
+    color : black;
+    text-align:center;
+`
+export const P4 = styled.p`
+    font-size : 24px;
+    color : black;
+    text-align:center;
+    margin : 0px 0px 30px 0px;
+`
 export const P_Alert = styled.p`
     margin : 80px 0px 30px 0px;
     font-size : 22px;
@@ -34,4 +45,7 @@ export const DivWithdraw = styled.div`
 `
 export const DivDeposit = styled.div`
     margin : 30px 20px 10px 20px;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
 `

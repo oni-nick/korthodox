@@ -11,11 +11,9 @@ function Ads(){
     return (
         <AdsDiv>
             <AdsTable/>
-            {
-            user.email
+            {user.email
             ? <Link to="/ads/write"><Button type="primary" style={{marginBottom : 70, marginLeft : 380, marginTop : 10}}>광고 등록</Button></Link>
-            : <p>로그인 후에 광고 등록이 가능합니다. </p>
-            } 
+            : <p>로그인 후에 광고 등록이 가능합니다. </p>} 
         </AdsDiv>
     );
 }

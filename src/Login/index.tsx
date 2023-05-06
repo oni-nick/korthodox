@@ -77,7 +77,7 @@ const Login = () => {
                 </Form.Item>
                 <Form.Item {...tailLayout}>
                     <ButtonWrapper>
-                        <Button type="primary" htmlType="submit">로그인</Button>
+                        <Button type="primary" htmlType="submit">로그인</Button>&nbsp;&nbsp;
                         <Link to="/register"><Button htmlType="button">회원가입</Button></Link>
                     </ButtonWrapper>
                 </Form.Item>

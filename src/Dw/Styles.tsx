@@ -20,6 +20,12 @@ export const P2 = styled.p`
     color : black;
     text-align:center;
 `
+export const P_Alert = styled.p`
+    margin : 80px 0px 30px 0px;
+    font-size : 22px;
+    color : black;
+    text-align:center;
+`
 
 export const DivWithdraw = styled.div`
     margin : 50px 20px 10px 20px;

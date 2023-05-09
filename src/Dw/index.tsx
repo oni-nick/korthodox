@@ -1,15 +1,28 @@
-import { useState } from "react";
-import { DWdiv } from "./Styles"
+import { useEffect, useState } from "react";
+import { DWdiv, P_Alert } from "./Styles"
 import Deposit from "./Deposit";
 import DwTable from "./DwTable";
 import Withdraw from "./Withdraw";
 import { Radio } from 'antd';
 import type { RadioChangeEvent } from 'antd';
+import { UserInfo, useUserDispatch, useUserState } from "../context/user";
+import axios from "axios";
 
 
-function DWpage(){
+function Dw(){
     const [isDepoist, setDeposit] = useState('a');
+    const user = useUserState();
+    const dispatch = useUserDispatch();
 
+    useEffect(() => {
+      axios.get<UserInfo | null>('/api/user/me')
+        .then(res => {
+          if (res.data) {
+            return dispatch({ type: 'LOG_IN', data: res.data });
+          }
+        });
+    }, []);
+    
     function toggleDeposit(e: RadioChangeEvent){
         switch(e.target.value){
             case 'a': 
@@ -38,7 +51,8 @@ function DWpage(){
     }
     
     return(
-    <>
+    <>  {user.email 
+        ? 
         <DWdiv>
             <Radio.Group onChange={toggleDeposit} defaultValue="a" size="large">
                 <Radio.Button value="a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Radio.Button>
@@ -47,10 +61,16 @@ function DWpage(){
             </Radio.Group>
             {returnDeposit()}
         </DWdiv>
-
+        : 
+        <DWdiv>
+            <P_Alert>로그인이 필요한 페이지입니다.<br/><br/> 로그인을 해주세요.</P_Alert>
+        </DWdiv>
+            
+        }
+        
         
     </>
     );
 }
 
-export default DWpage;
+export default Dw;

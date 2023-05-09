@@ -74,7 +74,7 @@ const Register = () => {
                 </Form.Item>
                 <Form.Item {...tailLayout}>
                     <ButtonWrapper>
-                        <Button type="primary" htmlType="submit">등록하기</Button>
+                        <Button type="primary" htmlType="submit">등록하기</Button>&nbsp;&nbsp;
                         <Link to="/login"><Button htmlType="button">취소하기</Button></Link>
                     </ButtonWrapper>
                 </Form.Item>

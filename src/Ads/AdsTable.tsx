@@ -1,7 +1,9 @@
-import { Table, Divider } from 'antd';
+import { useNavigate } from "react-router-dom";
+import { Table } from 'antd';
 import { Image } from 'antd';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
+import { P } from "./Styles"
 
 interface Ads {
   id: number;
@@ -48,7 +50,9 @@ const columns = [
 ];
 
 function AdsTable(){
+
   const [ads, setAds] = useState<Ads[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get<Ads[]>('/api/ads')
@@ -59,8 +63,16 @@ function AdsTable(){
 
   return(
     <>
-      <Divider>광고 목록</Divider>
-      <Table columns={columns} dataSource={ads} size="large" />
+      <P>광고 목록</P>
+      <Table columns={columns} dataSource={ads} size="large" onRow={(record, rowIndex) => {
+        return {
+          onClick: (event) => {
+            navigate(`/ads/${record.id}`)
+          }
+      
+        };
+      }} />
+  
     </>
   );
 }

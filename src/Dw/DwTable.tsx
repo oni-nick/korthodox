@@ -7,7 +7,7 @@ function DwTable(){
     <>
         <P2>입출금 내역</P2>
         <Table columns={columns} dataSource={data} size="large" />
-
+        
     </>
     );
 }

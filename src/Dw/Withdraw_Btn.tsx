@@ -47,10 +47,10 @@ const PriceInput: React.FC<PriceInputProps> = ({ value = {}, onChange }) => {
   return (
     <span>
       <Input
-        type="text"
+        type="number"
         value={value.number || number}
         onChange={onNumberChange}
-        style={{ width: 100 }}
+        style={{ width: 200 }}
       />
       <Select
         value={value.currency || currency}

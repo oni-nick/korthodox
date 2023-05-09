@@ -1,22 +1,37 @@
 import { Button, Checkbox, Input } from 'antd';
 import { P, DivWithdraw, P2 } from "./Styles"
+import axios, { AxiosError } from 'axios';
 import Withdraw_Btn from "./Withdraw_Btn"
+import { useState } from 'react';
+
 function Withdraw(){
 
-    const onFinish = (values: any) => {
-        alert('Success:');
-      };
-      
-      const onFinishFailed = (errorInfo: any) => {
-        alert('Failed:');
-      };
+    const [errMessage, setErrMessage] = useState('');
 
+
+
+    const userBalance = async (values: any) => {
+        try {
+            await axios.get('/api/user/balance');
+        } catch (e) {
+            const axiosError = e as AxiosError;
+            if (axiosError.response?.status === 400) {
+                setErrMessage('이미 등록된 ID 입니다.');
+            } else {
+                setErrMessage('예기치 못한 에러가 발생하였습니다 잠시후 시도해주세요.');
+            }
+        }
+        console.log(errMessage);
+        console.log()
+    };
+    
+      
     return(
         <DivWithdraw>
             
             <div style={{ marginBottom : '30px'}}>
                 출금주소:&nbsp;
-                <Input style={{display : 'inline-block', width : '200px', marginLeft : '5px'}} id="Dadress" name="Dadress"/>
+                <Input style={{display : 'inline-block', width : '300px', marginLeft : '5px'}} id="Dadress" name="Dadress"/>
             </div>
             <Withdraw_Btn/>
             <div>

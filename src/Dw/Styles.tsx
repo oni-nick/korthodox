@@ -1,6 +1,20 @@
+import { Button } from "antd"
 import styled from "styled-components"
 
+
 export {}
+export const Sbutton = styled(Button)`
+    
+`
+export const Text = styled.h3`
+    font-size : 14px;
+    font-weight : normal;
+`
+export const Text2 = styled.h3`
+    font-size : 14px;
+    font-weight : normal;
+    display : inline;
+`
 
 export const DWdiv = styled.div`
     display : flex;

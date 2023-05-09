@@ -1,8 +1,8 @@
-import { Descriptions } from 'antd';
-import { useParams, useLocation } from "react-router-dom";
+import { Card } from 'antd';
+import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { DetailDiv } from "./Styles";
+import { DetailDiv, Text } from "./Styles";
 
 interface Ads {
     id: number;
@@ -16,42 +16,34 @@ interface Ads {
   }
   
 function Detail(){
-    const [ads, setAds] = useState<Ads[]>([]);
+    const [ads, setAds] = useState<Ads | null>(null);
     let { index }  = useParams();
 
-    const ads_key = Object.keys(ads);
-    const ads_value = Object.values(ads);
-    
-    const _id = String(ads_value[0])
-    const title = String(ads_value[1])
-
-    
+    const _image_id = ads == null ? '' : ads.image_id
+    const _title = ads == null ? '' : ads.title
+    const _subtitle = ads == null ? '' : ads.subtitle
+    const _reward = ads == null ? '' : ads.reward
+    let _start_date = new Date(ads == null ? '' : ads.start_date)
+    //{ads == null ? '' : ads.start_date} 밀리초 변환 잘 안됨
     
 
     useEffect(() => {
-        axios.get<Ads[]>(`/api/ads/${index}`)
-          .then((res) => {
-            setAds(res.data);
-          });  
-      }, [])    
-      // Narowing
-      
-      //const Ads_Index = 
-      //(typeof index) !== 'undefined' 
-      //? ads[index]
-     //: ads[1]
+      axios.get<Ads>(`/api/ads/${index}`)
+        .then((res) => {
+          setAds(res.data);
+        });  
+    }, [])    
     
-    return(
+    return (
       <>
-        {console.log('ads 1: ',  ads)}
-        {console.log('ads 2: ',  Object.keys(ads))}
-        {console.log('ads 3: ',  Object.values(ads))}
         <DetailDiv>
-            <h1>현재 페이지의 파라미터는 { index } 입니다.</h1>
-      
+          <Card hoverable style={{ width: 800, marginRight : '50px', marginBottom : '100px' }} cover={<img alt="10,000 krw" src={'/api/image/' + _image_id} />}>   
+                <h1>{'광고 이름 : ' + _title}</h1>
+                <Text>{'광고 내용 : ' + _subtitle}</Text>
+                <Text>{'광고 리워드 : ' + _reward}</Text>
+        </Card>
         </DetailDiv>
-
-        </>
+      </>
     );
 }
 

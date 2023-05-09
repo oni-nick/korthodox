@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://13.125.177.45:4000/',
+      target: 'https://adsrider.wo.tc/',
       changeOrigin: true,
     })
   );

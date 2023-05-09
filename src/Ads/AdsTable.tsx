@@ -65,14 +65,13 @@ function AdsTable(){
     <>
       <P>광고 목록</P>
       <Table columns={columns} dataSource={ads} size="large" onRow={(record, rowIndex) => {
-      let num_index = Number(rowIndex) + 1;
-      return {
-      onClick: (event) => {
-        navigate(`/ads/${num_index}`)
-      }
+        return {
+          onClick: (event) => {
+            navigate(`/ads/${record.id}`)
+          }
       
-    };
-  }} />
+        };
+      }} />
   
     </>
   );

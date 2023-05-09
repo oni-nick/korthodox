@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DWdiv, P_Alert } from "./Styles"
 import Deposit from "./Deposit";
 import DwTable from "./DwTable";
 import Withdraw from "./Withdraw";
 import { Radio } from 'antd';
 import type { RadioChangeEvent } from 'antd';
-import { useUserState } from "../context/user";
+import { UserInfo, useUserDispatch, useUserState } from "../context/user";
+import axios from "axios";
 
 
 function Dw(){
     const [isDepoist, setDeposit] = useState('a');
     const user = useUserState();
+    const dispatch = useUserDispatch();
 
+    useEffect(() => {
+      axios.get<UserInfo | null>('/api/user/me')
+        .then(res => {
+          if (res.data) {
+            return dispatch({ type: 'LOG_IN', data: res.data });
+          }
+        });
+    }, []);
+    
     function toggleDeposit(e: RadioChangeEvent){
         switch(e.target.value){
             case 'a': 

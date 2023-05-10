@@ -12,6 +12,7 @@ import {
 import axios from 'axios';
 import { CreateAdsForm, CreateAdsFormWrapper } from '../Styles';
 import { RcFile } from "antd/es/upload";
+import RenderBalance from "./RenderBalance";
 
 function CreateAds(){
   const { RangePicker } = DatePicker;
@@ -72,7 +73,8 @@ function CreateAds(){
         </Form.Item>
 
         <Form.Item name="price" label="광고 비용">
-          <InputNumber />
+          <InputNumber style={{width : '190px'}} />
+          <RenderBalance/>
         </Form.Item>
 
         <Form.Item name="period" label="광고 기간 ">

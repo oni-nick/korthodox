@@ -3,6 +3,7 @@ import axios from 'axios';
 import { StyledHeader, StyledHeaderLogo, StyledHeaderMenu, Spacer, Anchor } from "./Styles"
 import { useUserDispatch, useUserState } from '../context/user';
 import adsrider from '../src_assets/adsrider.png'
+import RenderBalance from './RenderBalance';
 
 
 function Header(){
@@ -35,6 +36,9 @@ function Header(){
                                 <Anchor href="/login"><p><UserOutlined />로그인</p></Anchor>
                             </li>
                         :   <>
+                                <div style={{marginRight : '30px'}}>
+                                    <RenderBalance/>
+                                </div>
                                 <li><Anchor onClick={doLogOut}><p>로그아웃</p></Anchor></li>
                                 <li><Anchor href="/mypage"><p>마이페이지</p></Anchor></li>
                             </>

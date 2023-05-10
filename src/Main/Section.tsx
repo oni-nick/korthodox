@@ -3,6 +3,7 @@ import img03 from '../src_assets/03.jpg'
 import {StyledH3, StyledPtag, StyledSection, StyledDescDiv} from "./Styles"
 
 type DescriptionType = {
+  key : number;
   image: string;
   title: string;
   description: string;
@@ -20,7 +21,7 @@ function Section(){
           <StyledDescDiv>
             <StyledH3>{d.title}</StyledH3>
             <StyledPtag>
-              {d.description} 
+              {d.description}
             </StyledPtag>
           </StyledDescDiv>
         </StyledSection>
@@ -32,6 +33,7 @@ function Section(){
 
 const descriptions: DescriptionType[] = [
   {
+    key : 1,
     image: img01,
     title: '서비스 소개',
     description: '\n\
@@ -39,6 +41,7 @@ const descriptions: DescriptionType[] = [
     ',
   },
   {
+    key : 2,
     image: img01,
     title: '코인 리워드',
     description: '\n\
@@ -47,6 +50,7 @@ const descriptions: DescriptionType[] = [
       ,
   },
   {
+    key : 3,
     image: img01,
     title: '광고 효과',
     description: '\n\
@@ -54,6 +58,7 @@ const descriptions: DescriptionType[] = [
       또한 블록체인을 통해 광고 내역이 투명하게 관리됩니다.',
   },
   {
+    key : 4,
     image: img01,
     title: '코인 거래 기능',
     description: 'AdsRider는 코인 거래 기능을 제공합니다.',

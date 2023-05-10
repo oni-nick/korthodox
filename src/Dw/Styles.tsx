@@ -4,16 +4,21 @@ import styled from "styled-components"
 
 export {}
 export const Sbutton = styled(Button)`
-    
+
 `
 export const Text = styled.h3`
     font-size : 14px;
     font-weight : normal;
+    float : right;
+    margin : 0px;
+    color : #2098ee;
 `
+
 export const Text2 = styled.h3`
     font-size : 14px;
     font-weight : normal;
     display : inline;
+    color : #2098ee;
 `
 
 export const DWdiv = styled.div`

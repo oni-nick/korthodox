@@ -95,3 +95,11 @@ export const Div = styled.div`
   align-items : center;
   flex-direction : column;
 `
+
+export const Text2 = styled.h3`
+    font-size : 14px;
+    font-weight : normal;
+    display : inline;
+    float : right;
+    margin : 0px;
+`

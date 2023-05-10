@@ -7,17 +7,23 @@ import BigNumber from 'bignumber.js';
 
 function Withdraw(){
 
-    const [adress, setAdress] = useState('');
+    const [address, setAddress] = useState('');
     const [amount, setAmount] = useState('');
     const [text1, setText1] = useState('주소');
     const [text2, setText2] = useState('수량');
     const [currency, setCurrency] = useState('ADS');
     const [balance, setBalance] = useState<UserBalance[]>([]);
 
-    function withdraw(){
-        console.log(adress);
-        console.log(amount);
-    }
+    const withdraw = async () => {
+        // TODO: loading, 여러번 클릭되지않도록 해야함
+        const result = await axios.post<string>('/api/user/withdrawal', {
+            amount: amount,
+            to: address,
+        });
+
+        // TODO: return 값은 hash, 보여주기
+        console.log(result.data);
+    };
 
     function toggleCurrency(e: RadioChangeEvent){
         switch(e.target.value){
@@ -80,7 +86,7 @@ function Withdraw(){
 
             <div style={{ marginBottom : '10px'}}>
                 출금 {text1} : &nbsp;
-                <Input id='adress' onChange={(event) => setAdress(event.target.value)} style={{display : 'inline-block', width : '350px', marginLeft : '5px'}} />
+                <Input id='address' onChange={(event) => setAddress(event.target.value)} style={{display : 'inline-block', width : '350px', marginLeft : '5px'}} />
                 <br/><br/>출금 {text2} : &nbsp;
                 <Input id='amount' onChange={(event) => setAmount(event.target.value)} style={{display : 'inline-block', width : '220px', marginLeft : '5px'}} type='number'/>
                 &nbsp;  <Text2>{currency}</Text2> &nbsp;

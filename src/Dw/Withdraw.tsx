@@ -3,37 +3,21 @@ import { P, DivWithdraw, Text, Text2 } from "./Styles"
 import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { UserInfo, useUserState, useUserDispatch } from '../context/user';
 import BigNumber from 'bignumber.js';
 
 function Withdraw(){
-    const config = {
-        FORMAT: {
-            // string to prepend
-            prefix: '',
-            // decimal separator
-            decimalSeparator: '.',
-            // grouping separator of the integer part
-            groupSeparator: ',',
-            // primary grouping size of the integer part
-            groupSize: 3,
-            // secondary grouping size of the integer part
-            secondaryGroupSize: 0,
-            // grouping separator of the fraction part
-            fractionGroupSeparator: ' ',
-            // grouping size of the fraction part
-            fractionGroupSize: 0,
-            // string to append
-            suffix: ''
-          }
-    };
 
-    const [errMessage, setErrMessage] = useState('');
+    const [adress, setAdress] = useState('');
+    const [amount, setAmount] = useState('');
     const [text1, setText1] = useState('주소');
     const [text2, setText2] = useState('수량');
     const [currency, setCurrency] = useState('ADS');
     const [balance, setBalance] = useState<UserBalance[]>([]);
-    const user = useUserState();
+
+    function withdraw(){
+        console.log(adress);
+        console.log(amount);
+    }
 
     function toggleCurrency(e: RadioChangeEvent){
         switch(e.target.value){
@@ -49,7 +33,6 @@ function Withdraw(){
                 break;
 
             }
-            console.log(currency)
     }
 
 
@@ -97,9 +80,9 @@ function Withdraw(){
 
             <div style={{ marginBottom : '10px'}}>
                 출금 {text1} : &nbsp;
-                <Input style={{display : 'inline-block', width : '350px', marginLeft : '5px'}} />
+                <Input id='adress' onChange={(event) => setAdress(event.target.value)} style={{display : 'inline-block', width : '350px', marginLeft : '5px'}} />
                 <br/><br/>출금 {text2} : &nbsp;
-                <Input style={{display : 'inline-block', width : '220px', marginLeft : '5px'}} type='number'/>
+                <Input id='amount' onChange={(event) => setAmount(event.target.value)} style={{display : 'inline-block', width : '220px', marginLeft : '5px'}} type='number'/>
                 &nbsp;  <Text2>{currency}</Text2> &nbsp;
                 <Radio.Group onChange={toggleCurrency} defaultValue="ads" size="small">
                     <Radio.Button value="ads">ADS</Radio.Button>
@@ -109,11 +92,10 @@ function Withdraw(){
             </div>
                 {renderBalance()}
             <div>
-
                 <P>※주의사항※<br/>암호화폐 특성상 출금신청이 완료되면 취소가 불가하기 때문에, 출금 시 주소를 확인 후 입력해 주시기 바랍니다.</P>
                 <Checkbox style={{margin : '10px 10px 30px 20px'}}>동의합니다.</Checkbox>
             </div>
-            <Button style={{width: '300px'}}type="primary" htmlType="submit">
+            <Button onClick={withdraw} style={{width: '300px'}}type="primary" htmlType="submit">
                 출금하기
             </Button>
         </DivWithdraw>

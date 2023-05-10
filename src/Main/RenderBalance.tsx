@@ -33,9 +33,9 @@ function RenderBalance(){
         <div style={{ marginLeft : '20px'}}>
             <Text2>{user.email} 계정 잔액</Text2>
             <br/>
-            <Text2>{new BigNumber(balance[1].available).toFormat()} {balance[1].type}</Text2>
-            <br/>
             <Text2>{new BigNumber(balance[2].available).toFormat()} {balance[2].type}</Text2>
+            <br/>
+            <Text2>{new BigNumber(balance[1].available).toFormat()} {balance[1].type}</Text2>
         </div>
     );
 }

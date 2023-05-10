@@ -4,6 +4,7 @@ export type UserInfo = {
     email: string;
     level: string,
     address: string,
+    expireDate : Date,
     join_time: Date,
 };
 
@@ -13,6 +14,7 @@ export const initialState: UserInfo = {
     email: '',
     level: '',
     address: '',
+    expireDate: new Date(),
     join_time: new Date(),
 }
 

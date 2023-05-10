@@ -60,21 +60,17 @@ function Withdraw(){
         if (balance.length <= 0){
             return(<></>);
         }
+        const adsBalance = balance.find(b => b.type === 'ADS')?.amount || '0';
+        const krwBalance = balance.find(b => b.type === 'KRW')?.amount || '0';
         return(
             <div style={{ marginLeft : '20px'}}>
                 <Text>잔액</Text><br/>
-                <Text>{new BigNumber(balance[1].available).toFormat()} {balance[1].type}</Text><br/>
-                <Text>{new BigNumber(balance[2].available).toFormat()} {balance[2].type}</Text>
-
+                <Text>{new BigNumber(adsBalance).toFormat()} ADS</Text><br/>
+                <Text>{new BigNumber(krwBalance).toFormat()} KRW</Text><br/>
             </div>
         );
     }
-// console.log(new BigNumber(balance[2].available).toFormat());
-//     <div style={{ marginLeft : '20px'}}>
-//     <Text>총 보유 자산</Text>
-//     <Text>{balance.length > 0 ? balance[1].type + '  ' + new BigNumber(balance[1].available).toFormat() : '잔액이 조회 되지않습니다.'}</Text>
-//     <Text>{balance.length > 0 ? balance[2].type + '   ' + balance[2].available : '잔액이 조회 되지않습니다.'}</Text>
-//      </div>
+
     return(
         <DivWithdraw>
 
@@ -83,18 +79,19 @@ function Withdraw(){
                 <Input id='adress' onChange={(event) => setAdress(event.target.value)} style={{display : 'inline-block', width : '350px', marginLeft : '5px'}} />
                 <br/><br/>출금 {text2} : &nbsp;
                 <Input id='amount' onChange={(event) => setAmount(event.target.value)} style={{display : 'inline-block', width : '220px', marginLeft : '5px'}} type='number'/>
-                &nbsp;  <Text2>{currency}</Text2> &nbsp;
+                &nbsp; <Text2>{currency}</Text2> &nbsp;
                 <Radio.Group onChange={toggleCurrency} defaultValue="ads" size="small">
                     <Radio.Button value="ads">ADS</Radio.Button>
                     <Radio.Button value="krw">KRW</Radio.Button>
                 </Radio.Group>
 
             </div>
-                {renderBalance()}
+            {renderBalance()}
             <div>
                 <P>※주의사항※<br/>암호화폐 특성상 출금신청이 완료되면 취소가 불가하기 때문에, 출금 시 주소를 확인 후 입력해 주시기 바랍니다.</P>
                 <Checkbox style={{margin : '10px 10px 30px 20px'}}>동의합니다.</Checkbox>
             </div>
+
             <Button onClick={withdraw} style={{width: '300px'}}type="primary" htmlType="submit">
                 출금하기
             </Button>

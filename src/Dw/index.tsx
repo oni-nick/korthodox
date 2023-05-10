@@ -22,10 +22,10 @@ function Dw(){
           }
         });
     }, []);
-    
+
     function toggleDeposit(e: RadioChangeEvent){
         switch(e.target.value){
-            case 'a': 
+            case 'a':
                 setDeposit('a');
                 break;
             case 'b':
@@ -38,7 +38,7 @@ function Dw(){
         }
     function returnDeposit(){
         switch(isDepoist){
-            case 'a': 
+            case 'a':
                 return <Deposit/>
                 break;
             case 'b':
@@ -49,10 +49,10 @@ function Dw(){
                 break;
             }
     }
-    
+
     return(
-    <>  {user.email 
-        ? 
+    <>  {user.email
+        ?
         <DWdiv>
             <Radio.Group onChange={toggleDeposit} defaultValue="a" size="large">
                 <Radio.Button value="a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;입금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Radio.Button>
@@ -61,14 +61,14 @@ function Dw(){
             </Radio.Group>
             {returnDeposit()}
         </DWdiv>
-        : 
+        :
         <DWdiv>
             <P_Alert>로그인이 필요한 페이지입니다.<br/><br/> 로그인을 해주세요.</P_Alert>
         </DWdiv>
-            
+
         }
-        
-        
+
+
     </>
     );
 }

@@ -21,6 +21,13 @@ export const Text2 = styled.h3`
     color : #2098ee;
 `
 
+export const Text3 = styled.h3`
+    font-size : 14px;
+    font-weight : normal;
+    margin-top : 30px;
+    display : inline;
+    color : #2098ee;
+`
 export const DWdiv = styled.div`
     display : flex;
     align-items : center;
@@ -67,4 +74,8 @@ export const DivDeposit = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
+`
+export const DivHash= styled.div`
+    display : inline;
+    margin-top : 30px;
 `

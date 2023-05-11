@@ -1,5 +1,5 @@
 import { Button, Checkbox, Input, Radio, RadioChangeEvent } from 'antd';
-import { P, DivWithdraw, Text, Text2 } from "./Styles"
+import { P, DivWithdraw, Text, Text2, Text3, DivHash } from "./Styles"
 import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -9,6 +9,7 @@ function Withdraw(){
 
     const [address, setAddress] = useState('');
     const [amount, setAmount] = useState('');
+    const [tranHash, setTranHash] = useState<string>('');
     const [text1, setText1] = useState('주소');
     const [text2, setText2] = useState('수량');
     const [currency, setCurrency] = useState('ADS');
@@ -29,10 +30,13 @@ function Withdraw(){
             setBalance(res.data)
           }
         });
+
         setTimeout(()=>{setLoading(false)});
+
+        setTranHash(result.data);
+        console.log(result.data);
+        console.log(tranHash);
         // TODO: return 값은 hash, 보여주기
-        // console.log(result.data);
-        alert("[출금 완료] \n\트랜잭션 해시 : " + result.data);
     };
 
     // ADS KRW 변환
@@ -102,7 +106,9 @@ function Withdraw(){
                     <Radio.Button value="krw">KRW</Radio.Button>
                 </Radio.Group>
             </div>
+
             {renderBalance()}
+
             <div>
                 <P>※주의사항※<br/>암호화폐 특성상 출금신청이 완료되면 취소가 불가하기 때문에, 출금 시 주소를 확인 후 입력해 주시기 바랍니다.</P>
                 <Checkbox style={{margin : '10px 10px 30px 20px'}}>동의합니다.</Checkbox>
@@ -111,6 +117,14 @@ function Withdraw(){
             <Button onClick={withdraw} style={{width: '300px'}}type="primary" htmlType="submit" loading={loading}>
                 출금하기
             </Button>
+
+            <DivHash style={{display : 'inline'}}>
+                <Text3>{tranHash !== '' ? '[출금 완료] 트랜잭션 해시 : ' : ''}</Text3>
+                <a href={`https://sepolia.etherscan.io/tx/${tranHash}`} target='_blank'>
+                    {tranHash !== '' ? tranHash.slice(0,12) : '' }
+                </a>
+            </DivHash>
+
         </DivWithdraw>
     );
 }

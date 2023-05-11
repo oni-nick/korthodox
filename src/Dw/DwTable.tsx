@@ -29,7 +29,7 @@ function DwTable(){
     return(
     <>
         <P2>입출금 내역</P2>
-        <Table columns={columns} dataSource={history} onChange={onChange} size="large" />
+        <Table columns={columns} dataSource={history} onChange={onChange} size="large" style={{width : '800px'}} />
     </>
     );
 }

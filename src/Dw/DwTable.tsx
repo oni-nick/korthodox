@@ -1,8 +1,8 @@
-import { Table } from 'antd';
+import { Table, TableProps } from 'antd';
 import {P2} from './Styles'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { columns, data } from './DWTableData';
+import { columns } from './DWTableData';
 
 interface DwHistory {
   amount: string,
@@ -23,10 +23,13 @@ function DwTable(){
         });
     }, []);
 
+    const onChange: TableProps<DwHistory>['onChange'] = (sorter) => {
+    };
+
     return(
     <>
         <P2>입출금 내역</P2>
-        <Table columns={columns} dataSource={history} size="large" />
+        <Table columns={columns} dataSource={history} onChange={onChange} size="large" />
     </>
     );
 }

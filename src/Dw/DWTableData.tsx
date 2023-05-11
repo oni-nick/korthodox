@@ -1,7 +1,7 @@
 import type { ColumnsType } from 'antd/es/table';
 import BigNumber from 'bignumber.js';
 
-interface DwHistory {
+export interface DwHistory {
   amount: string,
   hash: string,
   timestamp: number,
@@ -35,6 +35,7 @@ function typeChange(text : any){
       align : 'center',
       title: '날짜',
       dataIndex: 'timestamp',
+      sorter: (a, b) =>b.timestamp - a.timestamp,
       render: (text) => <p>{dateConvert(new Date(text))}</p>,
     },
     {
@@ -42,6 +43,12 @@ function typeChange(text : any){
       title: '금액',
       dataIndex: 'amount',
       render: (text) => <p>{new BigNumber(text).toFormat()}</p>
+    },
+    {
+      align : 'center',
+      title: '종류',
+      dataIndex: '',
+      render: () => <p>ADS</p>,
     },
     {
       align : 'center',
@@ -53,17 +60,6 @@ function typeChange(text : any){
       align : 'center',
       title: '해시',
       dataIndex: 'hash',
-      render: (text) => <a href={`https://sepolia.etherscan.io/tx/${text}`} target='_blank'>{text}</a>,
+      render: (text) => <a href={`https://sepolia.etherscan.io/tx/${text}`} target='_blank'>{text.slice(0, 12)}</a>,
     },
-  ];
-
-  export const data: DwHistory[] = [
-    {
-      amount: '1',
-      hash: '1',
-      timestamp: 1,
-      type: '1',
-    },
-
-
   ];

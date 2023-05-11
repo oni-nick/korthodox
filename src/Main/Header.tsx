@@ -37,7 +37,7 @@ function Header(){
                             </li>
                         :   <>
                                 <div style={{marginRight : '30px'}}>
-                                    <RenderBalance/>
+                                    <></>
                                 </div>
                                 <li><Anchor onClick={doLogOut}><p>로그아웃</p></Anchor></li>
                                 <li><Anchor href="/mypage"><p>마이페이지</p></Anchor></li>

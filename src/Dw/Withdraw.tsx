@@ -13,18 +13,29 @@ function Withdraw(){
     const [text2, setText2] = useState('수량');
     const [currency, setCurrency] = useState('ADS');
     const [balance, setBalance] = useState<UserBalance[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const withdraw = async () => {
-        // TODO: loading, 여러번 클릭되지않도록 해야함
+        // loading, 여러번 클릭되지않도록
+        setLoading(true);
         const result = await axios.post<string>('/api/user/withdrawal', {
             amount: amount,
             to: address,
         });
-
+        // 잔액 갱신
+        axios.get<UserBalance[] | null>('/api/user/balance')
+        .then(res => {
+          if (res.data) {
+            setBalance(res.data)
+          }
+        });
+        setTimeout(()=>{setLoading(false)});
         // TODO: return 값은 hash, 보여주기
-        console.log(result.data);
+        // console.log(result.data);
+        alert("[출금 완료] \n\트랜잭션 해시 : " + result.data);
     };
 
+    // ADS KRW 변환
     function toggleCurrency(e: RadioChangeEvent){
         switch(e.target.value){
             case 'ads':
@@ -66,8 +77,8 @@ function Withdraw(){
         if (balance.length <= 0){
             return(<></>);
         }
-        const adsBalance = balance.find(b => b.type === 'ADS')?.amount || '0';
-        const krwBalance = balance.find(b => b.type === 'KRW')?.amount || '0';
+        const adsBalance = balance.find(b => b.type === 'ADS')?.available || '0';
+        const krwBalance = balance.find(b => b.type === 'KRW')?.available || '0';
         return(
             <div style={{ marginLeft : '20px'}}>
                 <Text>잔액</Text><br/>
@@ -90,7 +101,6 @@ function Withdraw(){
                     <Radio.Button value="ads">ADS</Radio.Button>
                     <Radio.Button value="krw">KRW</Radio.Button>
                 </Radio.Group>
-
             </div>
             {renderBalance()}
             <div>
@@ -98,7 +108,7 @@ function Withdraw(){
                 <Checkbox style={{margin : '10px 10px 30px 20px'}}>동의합니다.</Checkbox>
             </div>
 
-            <Button onClick={withdraw} style={{width: '300px'}}type="primary" htmlType="submit">
+            <Button onClick={withdraw} style={{width: '300px'}}type="primary" htmlType="submit" loading={loading}>
                 출금하기
             </Button>
         </DivWithdraw>

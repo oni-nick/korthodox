@@ -69,10 +69,10 @@ function AdsTable(){
           onClick: (event) => {
             navigate(`/ads/${record.id}`)
           }
-      
+
         };
       }} />
-  
+
     </>
   );
 }

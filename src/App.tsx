@@ -15,6 +15,7 @@ import Coin from './Coin'
 import Ticket from './Ticket'
 import Mypage from './Main/Mypage'
 import Detail from './Ads/detail/index'
+import Map from './Ads/detail/Map';
 
 const Wrapper = styled.div`
   min-height : calc(100vh - 300px);
@@ -41,6 +42,7 @@ function App() {
               <Route path = "/dw" element={<Dw/>}/>
               <Route path = "/ads" element={<Ads/>}/>
               <Route path = "/ads/:index" element={<Detail/>}/>
+              <Route path = "/ads/:index/map" element={<Map/>}/>
               <Route path = "/coin" element={<Coin/>}/>
               <Route path = "/ticket" element={<Ticket/>}/>
               <Route path = "/ads/write" element={<CreateAds/>}/>

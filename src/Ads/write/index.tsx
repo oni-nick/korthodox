@@ -74,8 +74,9 @@ function CreateAds(){
 
         <Form.Item name="price" label="광고 비용">
           <InputNumber style={{width : '190px'}} />
-          <RenderBalance/>
         </Form.Item>
+
+        <RenderBalance/>
 
         <Form.Item name="period" label="광고 기간 ">
           <RangePicker />

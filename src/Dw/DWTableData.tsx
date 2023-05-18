@@ -1,5 +1,6 @@
 import type { ColumnsType } from 'antd/es/table';
 import BigNumber from 'bignumber.js';
+import { Link } from 'react-router-dom';
 
 export interface DwHistory {
   amount: string,
@@ -17,16 +18,15 @@ function dateConvert(date : Date){
 }
 
 function typeChange(text : any){
-  switch(text){
-    case 'deposit':
-      return <p>입금</p>
-    case 'withdrawal':
-      return <p>출금</p>
-    case 'admin_mint':
-      return <p>관리자</p>
+  if (text == 'deposit'){ return <p>입금</p>; }
+  else if (text == 'withdrawal'){ return <p>출금</p>; }
+  else if (text == 'admin_mint'){ return <p>관리자</p>; }
+  else if (text.startsWith('ads_result')) {
+      const ads = text.split('-');
+      return <Link to={`/ads/${ads[1]}`}> 광고 {ads[1]} </Link>;
+  }
 
-    }
-
+  else { return <p>없음</p>; }
 }
 
 
@@ -52,7 +52,7 @@ function typeChange(text : any){
     },
     {
       align : 'center',
-      title: '입/출금',
+      title: '타입',
       dataIndex: 'type',
       render: (text) => <p>{typeChange(text)}</p>,
     },

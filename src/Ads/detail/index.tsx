@@ -1,5 +1,5 @@
 import AdsDetail from "./AdsDetail";
-import AdsHistory from "./AdsHistory";
+import Map from "./Map";
 
 function Detail(){
   return(

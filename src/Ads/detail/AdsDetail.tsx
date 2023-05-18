@@ -45,7 +45,7 @@ function AdsDetail(){
 
       return(
         <>
-          <Card hoverable style={{ width: 800, marginRight : '50px', marginBottom : '100px' }} cover={<img alt="광고 이미지" src={'/api/image/' + nImageId} />}>
+          <Card hoverable style={{ width: 800, marginRight : '50px', marginBottom : '100px' }} cover={<img style={{width : 800, height : 500 }} alt="광고 이미지" src={'/api/image/' + nImageId} />}>
             <h1>{ nTitle }</h1>
             <Text>{'광고 제목 : ' + nTitle}</Text>
             <Text>{'광고 내용 : ' + nSubtitle}</Text>

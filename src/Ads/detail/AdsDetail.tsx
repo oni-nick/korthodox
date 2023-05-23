@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { Text } from "./Styles";
 import AdsHistory from "./AdsHistory";
 
-interface Ads {
+export interface Ads {
     id: number;
     title: string;
     subtitle: string;
@@ -14,7 +14,16 @@ interface Ads {
     reward: number;
     start_date: Date;
     end_date: Date;
-    // user_email: string;
+    history: {
+      id: string
+      ads_id: number
+      path: {latitude: string, longitude: string}[]
+      meters: number
+      hash: string
+      reward: string
+      start_time: Date
+      end_time: Date
+    }[]
   }
 
 
@@ -22,7 +31,6 @@ function AdsDetail(){
     const [ads, setAds] = useState<Ads | null>(null);
     let { index }  = useParams();
     const Index : number = Number(index);
-    //{ads == null ? '' : ads.start_date} 밀리초 변환 잘 안됨
 
     function RenderAds(){
       if (ads == null){

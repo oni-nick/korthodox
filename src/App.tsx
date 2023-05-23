@@ -42,7 +42,7 @@ function App() {
               <Route path = "/dw" element={<Dw/>}/>
               <Route path = "/ads" element={<Ads/>}/>
               <Route path = "/ads/:index" element={<Detail/>}/>
-              <Route path = "/ads/:index/map" element={<Map/>}/>
+              <Route path = "/ads/:index/:historyId" element={<Map/>}/>
               <Route path = "/coin" element={<Coin/>}/>
               <Route path = "/ticket" element={<Ticket/>}/>
               <Route path = "/ads/write" element={<CreateAds/>}/>

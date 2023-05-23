@@ -17,8 +17,8 @@ declare global {
 let map:any;
 
 // 해당 위치로 좌표 이동 버튼 onClick()
-function setCenter() {
-  var moveLatLon = new window.kakao.maps.LatLng(37.54699, 127.09598);
+function setCenter(adsHistory : any) { // : AdsHistoryType
+  var moveLatLon = new window.kakao.maps.LatLng(adsHistory?.path[0].latitude,adsHistory?.path[0].longitude);
   map.panTo(moveLatLon);
   }
 
@@ -125,7 +125,7 @@ export default function Map() {
   return (
     <Div>
       <MapContainer id="map"></MapContainer>
-      <Button onClick={() => setCenter()}>라이더 시작 위치로 이동</Button>
+      <Button onClick={() => setCenter(adsHistory)}>라이더 시작 위치로 이동</Button>
     </Div>
   );
 

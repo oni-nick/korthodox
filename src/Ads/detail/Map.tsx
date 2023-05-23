@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Breadcrumb, Button } from "antd";
 import { Div, MapContainer, Text2 } from "./Styles";
 import start from '../../src_assets/start.png'
 import end from '../../src_assets/end.png'
@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AdsHistoryType } from './AdsHistory';
 import { useParams } from "react-router-dom";
+import { HomeOutlined } from "@ant-design/icons";
 declare global {
   interface Window {
     kakao: any;
@@ -122,12 +123,18 @@ export default function Map() {
   mapScript.addEventListener("load", onLoadKakaoMap);
 
   return (
-    <Div>
-      <MapContainer id="map"></MapContainer>
-      <Button onClick={() => setCenter(adsHistory)}>라이더 시작 위치로 이동</Button> <br/> <br/>
-      <Text2>리워드 : {adsHistory?.reward} ADS</Text2>
-      <Text2>이동 거리 : {adsHistory?.meters} m</Text2>
-    </Div>
+    <>
+      <Div>
+        <Breadcrumb>
+          <Breadcrumb.Item href="/ads"><HomeOutlined /></Breadcrumb.Item>
+          <Breadcrumb.Item href={`/ads/${index.index}`}>{index.index}</Breadcrumb.Item>
+        </Breadcrumb>
+        <MapContainer id="map"></MapContainer>
+        <Button onClick={() => setCenter(adsHistory)}>라이더 시작 위치로 이동</Button> <br/> <br/>
+        <Text2>리워드 : {adsHistory?.reward} ADS</Text2>
+        <Text2>이동 거리 : {adsHistory?.meters} m</Text2>
+      </Div>
+    </>
   );
 
 }

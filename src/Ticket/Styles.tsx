@@ -16,8 +16,8 @@ export const CardDiv = styled.div`
 
 `
 export const Text = styled.h3`
-    font-size : 24px;
+    font-size : 18px;
     font-weight : normal;
-    margin : 0px;
+    margin : 30px;
     float : center;
 `

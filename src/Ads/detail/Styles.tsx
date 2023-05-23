@@ -10,8 +10,11 @@ export const Div = styled.div`
 export const Text = styled.h3`
     font-size : 20px;
     font-weight : normal;
-
  `
+ export const Text2 = styled.h3`
+ font-size : 18px;
+ font-weight : normal;
+`
 export const MapContainer = styled.div<{id : string}>`
     margin : 100px 100px;
     width: 1000px;

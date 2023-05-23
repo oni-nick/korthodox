@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import { Div, MapContainer } from "./Styles";
+import { Div, MapContainer, Text2 } from "./Styles";
 import start from '../../src_assets/start.png'
 import end from '../../src_assets/end.png'
 import { apikey } from './ApiKey'
@@ -125,7 +125,9 @@ export default function Map() {
   return (
     <Div>
       <MapContainer id="map"></MapContainer>
-      <Button onClick={() => setCenter(adsHistory)}>라이더 시작 위치로 이동</Button>
+      <Button onClick={() => setCenter(adsHistory)}>라이더 시작 위치로 이동</Button> <br/> <br/>
+      <Text2>리워드 : {adsHistory?.reward} ADS</Text2>
+      <Text2>이동 거리 : {adsHistory?.meters} m</Text2>
     </Div>
   );
 

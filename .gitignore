@@ -12,7 +12,7 @@
 /build
 
 # API KEY
-/src/Ads/detail/ApiKey.ts
+.env
 
 # misc
 .DS_Store

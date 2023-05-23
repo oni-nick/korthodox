@@ -2,7 +2,6 @@ import { Button } from "antd";
 import { Div, MapContainer, Text2 } from "./Styles";
 import start from '../../src_assets/start.png'
 import end from '../../src_assets/end.png'
-import { apikey } from './ApiKey'
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AdsHistoryType } from './AdsHistory';
@@ -15,6 +14,7 @@ declare global {
 
 // 전역변수
 let map:any;
+const API_KEY = process.env.REACT_APP_MAP_API_KEY;
 
 // 해당 위치로 좌표 이동 버튼 onClick()
 function setCenter(adsHistory : any) { // : AdsHistoryType
@@ -47,10 +47,9 @@ export default function Map() {
   // kakao map api
   window.scrollTo(0, 0);
   const mapScript = document.createElement("script");
-  const appKey = apikey;
 
   mapScript.async = true;
-  mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${appKey}&autoload=false`;
+  mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false`;
   document.head.appendChild(mapScript);
 
 

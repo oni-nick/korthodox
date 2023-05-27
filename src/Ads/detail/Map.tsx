@@ -49,10 +49,10 @@ export default function Map() {
 
   const onLoadKakaoMap = () => {
     if(adsHistory) {
-      const len = adsHistory.path.length;
-      for (let i = 0; i < len; i++){
-        polyPath.push(new window.kakao.maps.LatLng(adsHistory.path[i].latitude, adsHistory.path[i].longitude));
+      for (const p of adsHistory.path){
+        polyPath.push(new window.kakao.maps.LatLng(p.latitude, p.longitude));
       }
+      //const polyPath = adsHistory.path.map(p => new window.kakao.maps.LatLng(p.latitude, p.longitude))
     }
 
     window.kakao.maps.load(() => {

@@ -3,8 +3,6 @@ import axios from 'axios';
 import { StyledHeader, StyledHeaderLogo, StyledHeaderMenu, Spacer, Anchor } from "./Styles"
 import { useUserDispatch, useUserState } from '../context/user';
 import adsrider from '../src_assets/adsrider.png'
-import RenderBalance from './RenderBalance';
-
 
 function Header(){
     const user = useUserState();
@@ -25,7 +23,7 @@ function Header(){
             <StyledHeaderMenu>
                 <li><Anchor href="/ticket"><p>이용권 구매</p></Anchor></li>
                 <li><Anchor href="/coin"><p>코인 거래</p></Anchor></li>
-                <li><Anchor href="/ads"><p>광고 기능</p></Anchor></li>
+                <li><Anchor href="/ads"><p>광고 등록</p></Anchor></li>
                 <li><Anchor href="/dw"><p>입출금</p></Anchor></li>
             </StyledHeaderMenu>
             <Spacer></Spacer>

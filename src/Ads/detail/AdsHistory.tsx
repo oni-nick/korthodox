@@ -36,8 +36,8 @@ function AdsHistory({index} : {index:number}){
     const hour = date.getHours();
     const min = date.getMinutes();
     const sec = date.getSeconds();
-    const Date = Year  + '년 0' + Month + '월 ' + Day + '일 '
-    const Date2 = Year  + '년 0' + Month + '월 ' + Day + '일 ' + hour + '시' + min + '분' + sec + '초';
+    const Date = Year  + '년 ' + Month + '월 ' + Day + '일 '
+    const Date2 = Year  + '년 ' + Month + '월 ' + Day + '일 ' + hour + ':' + min + ':' + sec + '';
     return(Date2);
   }
 
@@ -74,9 +74,7 @@ function AdsHistory({index} : {index:number}){
     },
   ];
   return(
-    <>
-      <Table columns={column} dataSource={adsHistory} size="large" style={{width : '800px'}} />
-    </>
+    <Table columns={column} dataSource={adsHistory} size="large" style={{width : '800px'}} />
   );
 }
 

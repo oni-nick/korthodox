@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -21,3 +22,7 @@ export const Text = styled.h3`
     margin : 30px;
     float : center;
 `
+
+// export const Link2 = style(Link)`
+    
+// `

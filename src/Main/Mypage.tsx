@@ -1,11 +1,9 @@
-import { Table } from 'antd';
+import { Descriptions, Table } from 'antd';
 import { useUserState, UserInfo } from '../context/user';
-import { Div } from './Styles';
-import { ColumnsType } from 'antd/es/table';
+import { Div, MypageDiv } from './Styles';
 
 function Mypage(){
     const user = useUserState();
-    const data = [user];
 
     function dateConvert(date : Date){
         const Year = date.getFullYear()
@@ -24,38 +22,15 @@ function Mypage(){
     };
 
 
-    const column : ColumnsType<UserInfo>= [
-        {
-          align : 'center',
-          title: '이메일',
-          dataIndex: 'email',
-          render: (text) => <p>{(text)}</p>,
-        },
-        {
-            align : 'center',
-            title: '지갑 주소',
-            dataIndex: 'address',
-            render: (text) => <p>{(text)}</p>,
-        },
-        {
-            align : 'center',
-            title: '이용권 만료 기간',
-            dataIndex: 'expireDate',
-            render: (text) => <p>{dateConvert(new Date(text))}</p>,
-        },
-        {
-            align : 'center',
-            title: '가입 일자',
-            dataIndex: 'join_time',
-            render: (text) => <p>{dateConvert(new Date(text))}</p>,
-        },
-    ]
-
     return(
-        <Div>
-            <h2>마이페이지</h2>
-            <Table columns={column} dataSource={data} size="large" style={{width : '1000px'}} />
-        </Div>
+        <MypageDiv>
+            <Descriptions bordered size="default">    
+                <Descriptions.Item label="유저 이름"> {user.email}</Descriptions.Item>
+                <Descriptions.Item label="가입 일자">{dateConvert(new Date(user.join_time))}</Descriptions.Item>
+                <Descriptions.Item label="이용권 만료 기간">{dateConvert(new Date(user.expireDate))}</Descriptions.Item>
+                <Descriptions.Item label="개인 지갑 주소"> {user.address}</Descriptions.Item>
+            </Descriptions>
+        </MypageDiv>
     );
 }
 

@@ -32,11 +32,7 @@ function Withdraw(){
         });
 
         setTimeout(()=>{setLoading(false)});
-
         setTranHash(result.data);
-        console.log(result.data);
-        console.log(tranHash);
-        // TODO: return 값은 hash, 보여주기
     };
 
     // ADS KRW 변환

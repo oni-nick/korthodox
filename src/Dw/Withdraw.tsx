@@ -10,9 +10,6 @@ function Withdraw(){
     const [address, setAddress] = useState('');
     const [amount, setAmount] = useState('');
     const [tranHash, setTranHash] = useState<string>('');
-    const [text1, setText1] = useState('주소');
-    const [text2, setText2] = useState('수량');
-    const [currency, setCurrency] = useState('ADS');
     const [balance, setBalance] = useState<UserBalance[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -34,23 +31,6 @@ function Withdraw(){
         setTimeout(()=>{setLoading(false)});
         setTranHash(result.data);
     };
-
-    // ADS KRW 변환
-    function toggleCurrency(e: RadioChangeEvent){
-        switch(e.target.value){
-            case 'ads':
-                setCurrency('ADS');
-                setText1('주소');
-                setText2('수량');
-                break;
-            case 'krw':
-                setCurrency('KRW');
-                setText1('계좌');
-                setText2('금액');
-                break;
-
-            }
-    }
 
 
     interface UserBalance {
@@ -78,12 +58,10 @@ function Withdraw(){
             return(<></>);
         }
         const adsBalance = balance.find(b => b.type === 'ADS')?.available || '0';
-        const krwBalance = balance.find(b => b.type === 'KRW')?.available || '0';
         return(
             <div style={{ marginLeft : '20px'}}>
                 <Text>잔액</Text><br/>
                 <Text>{new BigNumber(adsBalance).toFormat()} ADS</Text><br/>
-                <Text>{new BigNumber(krwBalance).toFormat()} KRW</Text><br/>
             </div>
         );
     }
@@ -92,15 +70,11 @@ function Withdraw(){
         <DivWithdraw>
 
             <div style={{ marginBottom : '10px'}}>
-                출금 {text1} : &nbsp;
+                출금 주소 : &nbsp;
                 <Input id='address' onChange={(event) => setAddress(event.target.value)} style={{display : 'inline-block', width : '350px', marginLeft : '5px'}} />
-                <br/><br/>출금 {text2} : &nbsp;
+                <br/><br/>출금 수량 : &nbsp;
                 <Input id='amount' onChange={(event) => setAmount(event.target.value)} style={{display : 'inline-block', width : '220px', marginLeft : '5px'}} type='number'/>
-                &nbsp; <Text2>{currency}</Text2> &nbsp;
-                <Radio.Group onChange={toggleCurrency} defaultValue="ads" size="small">
-                    <Radio.Button value="ads">ADS</Radio.Button>
-                    <Radio.Button value="krw">KRW</Radio.Button>
-                </Radio.Group>
+                &nbsp; ADS 
             </div>
 
             {renderBalance()}

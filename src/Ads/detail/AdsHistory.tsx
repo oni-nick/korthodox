@@ -2,6 +2,7 @@ import { Table } from "antd";
 import { ColumnsType } from 'antd/es/table';
 import { AdsHisTable } from './Styles';
 import Map from "./Map";
+import { dateConverter } from "../../Utils";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Ads } from "./AdsDetail";
@@ -29,30 +30,19 @@ function AdsHistory({index} : {index:number}){
       });
   }, [])
 
-  function dateConvert(date : Date){
-    const Year = date.getFullYear();
-    const Month = date.getMonth()+1;
-    const Day = date.getDate();
-    const hour = date.getHours();
-    const min = date.getMinutes();
-    const sec = date.getSeconds();
-    const Date = Year  + '년 ' + Month + '월 ' + Day + '일 '
-    const Date2 = Year  + '년 ' + Month + '월 ' + Day + '일 ' + hour + ':' + min + ':' + sec + '';
-    return(Date2);
-  }
 
   const column : ColumnsType<AdsHistoryType>= [
     {
       align : 'center',
       title: '이용 시작',
       dataIndex: 'start_time',
-      render: (text) => <p>{dateConvert(new Date(text))}</p>,
+      render: (text) => <p>{dateConverter(new Date(text))}</p>,
     },
     {
       align : 'center',
       title: '이용 종료',
       dataIndex: 'end_time',
-      render: (text) => <p>{dateConvert(new Date(text))}</p>,
+      render: (text) => <p>{dateConverter(new Date(text))}</p>,
     },
     {
       align : 'center',
@@ -65,6 +55,12 @@ function AdsHistory({index} : {index:number}){
       title: '이용 거리',
       dataIndex: 'meters',
       render : (text) => <p>{text} m</p>
+    },
+    {
+      align : 'center',
+      title: '거래 해시',
+      dataIndex: 'id',
+      render : (text : string) => <a href={`https://sepolia.etherscan.io/tx/${text}`} target="_blank">{text}</a>
     },
     {
       align : 'center',

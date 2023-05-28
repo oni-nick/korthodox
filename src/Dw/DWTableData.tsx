@@ -17,16 +17,13 @@ function dateConvert(date : Date){
   return(Date);
 }
 
-function typeChange(text : any){
-  if (text == 'deposit'){ return <p>입금</p>; }
-  else if (text == 'withdrawal'){ return <p>출금</p>; }
-  else if (text == 'admin_mint'){ return <p>관리자</p>; }
-  else if (text.startsWith('ads_result')) {
-      const ads = text.split('-');
-      return <Link to={`/ads/${ads[1]}`}> 광고 {ads[1]} 보상 </Link>;
+function typeChange(text : string){
+  if (text.includes('-') == true){
+    const ads = text.split('-');
+    return <Link to={`/ads/${ads[1]}`}> 광고 {ads[1]} 보상 </Link>;
+  } else {
+    return text;
   }
-
-  else { return <p>없음</p>; }
 }
 
 export const columns: ColumnsType<DwHistory> = [

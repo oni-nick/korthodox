@@ -17,6 +17,8 @@ import Mypage from './Main/Mypage'
 import Detail from './Ads/detail/index'
 import Map from './Ads/detail/Map';
 import Purchase from './Ticket/Purchase';
+import { SuccessPage } from './Coin/Success';
+import { FailPage } from './Coin/Fail';
 
 const Wrapper = styled.div`
   min-height : calc(100vh - 300px);
@@ -45,6 +47,8 @@ function App() {
               <Route path = "/ads/:index" element={<Detail/>}/>
               <Route path = "/ads/:index/:historyId" element={<Map/>}/>
               <Route path = "/coin" element={<Coin/>}/>
+              <Route path = "/coin/success" element={<SuccessPage/>}/>
+              <Route path = "/coin/fail" element={<FailPage/>}/>
               <Route path = "/ticket" element={<Ticket/>}/>
               <Route path = "/ticket/:price" element={<Purchase/>}/>
               <Route path = "/ads/write" element={<CreateAds/>}/>

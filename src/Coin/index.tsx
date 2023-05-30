@@ -2,7 +2,7 @@ import { loadPaymentWidget, PaymentWidgetInstance } from '@tosspayments/payment-
 import { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useUserState } from '../context/user';
-import { Button, Input } from 'antd';
+import { AmountInput, AmountInputWrapper, Div, Spacer, SubmitButton, TossModuleWrapper } from './Styles';
 
 function Coin(){
     const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
@@ -55,17 +55,24 @@ function Coin(){
     }
 
     return(
-        <>
-        <h1>코인 거래 페이지 입니다.</h1>
-        <div id="payment-widget" />
-        <Input
-          type="number"
-          onChange={(event) => {
-            setPrice(parseInt(event.target.value));
-          }}
-        />
-        <Button onClick={onPay}>결제하기</Button>
-        </>
+        <Div>
+            <h1>코인 거래 페이지 입니다.</h1>
+            <TossModuleWrapper>
+                <div id="payment-widget" />
+            </TossModuleWrapper>
+            <AmountInputWrapper>
+                <Spacer />
+                <p>구매할 금액 :</p>
+                <AmountInput
+                    type="number"
+                    onChange={(event) => {
+                        setPrice(parseInt(event.target.value));
+                    }}
+                />
+                <SubmitButton onClick={onPay}>결제하기</SubmitButton>
+                <Spacer />
+            </AmountInputWrapper>
+        </Div>
     );
 }
 

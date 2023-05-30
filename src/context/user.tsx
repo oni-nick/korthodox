@@ -4,7 +4,8 @@ export type UserInfo = {
     email: string;
     level: string,
     address: string,
-    expireDate : Date,
+    // expireDate : Date,
+    expired_date : Date,
     join_time: Date,
 };
 
@@ -14,7 +15,7 @@ export const initialState: UserInfo = {
     email: '',
     level: '',
     address: '',
-    expireDate: new Date(),
+    expired_date: new Date(),
     join_time: new Date(),
 }
 
@@ -67,3 +68,7 @@ export function useUserDispatch() {
     if (!dispatch) throw new Error('Cannot find UserDispatchContext');
     return dispatch;
 };
+
+export function updateUserContext(dispatch: UserDispatch, newData: UserInfo) {
+    dispatch({ type: 'LOG_IN', data: newData });
+  }

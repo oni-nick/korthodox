@@ -10,7 +10,7 @@ function Ticket(){
 
     const { Meta } = Card;
     const user = useUserState();
-    const expireDate = dateConvert(new Date(user.expireDate))
+    const expireDate = dateConvert(new Date(user.expired_date))
 
     function dateConvert(date : Date){
       const Year = date.getFullYear()

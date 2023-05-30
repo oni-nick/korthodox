@@ -2,7 +2,7 @@ import { loadPaymentWidget, PaymentWidgetInstance } from '@tosspayments/payment-
 import { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useUserState } from '../context/user';
-import { AmountInput, AmountInputWrapper, Div, Spacer, SubmitButton, TossModuleWrapper } from './Styles';
+import { AmountInput, AmountInputWrapper, Div, Spacer, SubmitButton, Text, TossModuleWrapper } from './Styles';
 
 function Coin(){
     const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
@@ -56,7 +56,7 @@ function Coin(){
 
     return(
         <Div>
-            <h1>코인 거래 페이지 입니다.</h1>
+            <Text>다음 결제수단으로 ADS 코인을 구매할 수 있습니다</Text>
             <TossModuleWrapper>
                 <div id="payment-widget" />
             </TossModuleWrapper>

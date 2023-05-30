@@ -34,3 +34,9 @@ export const SubmitButton = styled(Button)`
 export const TossModuleWrapper = styled.div`
     width: 450px;
 `;
+export const Text = styled.h3`
+    font-size : 22px;
+    font-weight : normal;
+    margin : 30px;
+    float : center;
+`

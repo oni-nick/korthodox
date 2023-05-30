@@ -56,7 +56,7 @@ function Coin(){
 
     return(
         <Div>
-            <Text>다음 결제수단으로 ADS 코인을 구매할 수 있습니다</Text>
+            <Text>다음 결제 수단으로 ADS 코인을 구매할 수 있습니다</Text>
             <TossModuleWrapper>
                 <div id="payment-widget" />
             </TossModuleWrapper>

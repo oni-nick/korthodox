@@ -22,7 +22,7 @@ function Header(){
             <Spacer></Spacer>
             <StyledHeaderMenu>
                 <li><Anchor href="/ticket"><p>이용권 구매</p></Anchor></li>
-                <li><Anchor href="/coin"><p>코인 거래</p></Anchor></li>
+                <li><Anchor href="/coin"><p>코인 구매</p></Anchor></li>
                 <li><Anchor href="/ads"><p>광고 등록</p></Anchor></li>
                 <li><Anchor href="/dw"><p>입출금</p></Anchor></li>
             </StyledHeaderMenu>

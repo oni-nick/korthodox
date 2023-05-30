@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Card, Table } from "antd";
+import { Button, Card, Table } from "antd";
 
 export const Div = styled.div`
     display : flex;
@@ -29,4 +29,8 @@ export const MapContainer = styled.div<{id : string}>`
 
  export const AdsHisTable = styled(Table)`
     margin-bottom : 100px;
+ `
+
+ export const ButtonStart = styled(Button)`
+    margin : 40px 0px;
  `

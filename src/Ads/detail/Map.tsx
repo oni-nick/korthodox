@@ -1,4 +1,4 @@
-import { Breadcrumb, Button } from "antd";
+import { Breadcrumb, Button, Descriptions } from "antd";
 import { Div, MapContainer, Text2 } from "./Styles";
 import start from '../../src_assets/start.png'
 import end from '../../src_assets/end.png'
@@ -48,14 +48,12 @@ export default function Map() {
   document.head.appendChild(mapScript);
 
   const onLoadKakaoMap = () => {
-    if(adsHistory) {
-      for (const p of adsHistory.path){
-        polyPath.push(new window.kakao.maps.LatLng(p.latitude, p.longitude));
-      }
-      //const polyPath = adsHistory.path.map(p => new window.kakao.maps.LatLng(p.latitude, p.longitude))
-    }
-
     window.kakao.maps.load(() => {
+      if(adsHistory) {
+        for (const p of adsHistory.path){
+          polyPath.push(new window.kakao.maps.LatLng(p.latitude, p.longitude));
+        } };
+
       const mapContainer = document.getElementById("map");
       const mapOption = {
         center: new window.kakao.maps.LatLng(adsHistory?.path[0].latitude,adsHistory?.path[0].longitude), // 지도의 중심좌표
@@ -127,19 +125,24 @@ export default function Map() {
         <Breadcrumb
           items={[
             {
+              href: "/",
+              title: <span>메인 페이지</span>
+            },
+            {
               href: "/ads",
-              title: <HomeOutlined />
+              title: <span>광고 목록</span>
             },
             {
               href: `/ads/${index.index}`,
-              title: index.index
+              title: <span>광고 {index.index}</span>
             },
           ]}
         />
-        <MapContainer id="map"></MapContainer>
-        <Button onClick={() => setCenter(adsHistory)}>라이더 시작 위치로 이동</Button> <br/> <br/>
-        <Text2>리워드 : {adsHistory?.reward} ADS</Text2>
-        <Text2>이동 거리 : {adsHistory?.meters} m</Text2>
+        <MapContainer id="map"></MapContainer> <br/><br/>
+        <Descriptions bordered size="default">
+          <Descriptions.Item label="리워드">{adsHistory?.reward} ADS</Descriptions.Item>
+          <Descriptions.Item label="이동 거리">{adsHistory?.meters} m</Descriptions.Item>
+        </Descriptions>
       </Div>
     </>
   );

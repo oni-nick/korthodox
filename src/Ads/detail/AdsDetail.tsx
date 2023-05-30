@@ -1,5 +1,5 @@
 import { Div } from "./Styles";
-import { Card } from "antd";
+import { Breadcrumb, Card } from "antd";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -53,6 +53,18 @@ function AdsDetail(){
 
       return(
         <>
+          <Breadcrumb
+            items={[
+              {
+                href: "/",
+                title: <span>메인 페이지</span>
+              },
+              {
+                href: "/ads",
+                title: <span>광고 목록</span>
+              }
+            ]}
+          />
           <Card hoverable style={{ width: 800, marginRight : '50px', marginBottom : '100px' }} cover={<img style={{width : 800, height : 500 }} alt="광고 이미지" src={'/api/image/' + nImageId} />}>
             <h1>{ nTitle }</h1>
             <Text>{'광고 제목 : ' + nTitle}</Text>

@@ -41,6 +41,3 @@ export const Text3 = styled.h3`
     display : inline;
     color : #2098ee;
 `
-// export const Link2 = style(Link)`
-
-// `

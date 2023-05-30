@@ -29,7 +29,6 @@ function Ticket(){
     return(
 
       <Card_Div>
-        {user.email? <Text>{user.email}님의 이용권은 {expireDate}까지 입니다.</Text> : '' }
         <CardDiv>
           <Link to='/ticket/2000?price=2000&days=1'>
             <Card

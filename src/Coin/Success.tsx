@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom'
-import { Div, BottomButton } from './Styles';
-import { Button } from 'antd';
+import { Div } from './Styles';
+import { Button, Descriptions, Result } from 'antd';
 
 export function SuccessPage() {
     const [searchParams] = useSearchParams();
@@ -20,18 +20,21 @@ export function SuccessPage() {
 
     return (
         <Div>
-            <h1>결제 성공</h1>
-            <div>{`주문 아이디: ${searchParams.get('orderId')}`}</div>
-            <div>
-                {`결제 금액: ${Number(
-                    searchParams.get('amount')
-                ).toLocaleString()}원`}
-            </div>
-            <BottomButton>
-                <Link to='/mypage'>
-                    <Button>mypage 보러가기</Button>
-                </Link>
-            </BottomButton>
+            <Result
+                status="success"
+                title="결제 완료!"
+                subTitle=""
+                extra={[
+                <>
+                    <Descriptions bordered size="default">
+                        <Descriptions.Item label="주문 아이디">{searchParams.get('orderId')}</Descriptions.Item>
+                        <Descriptions.Item label="결제 금액">{Number(searchParams.get('amount')).toLocaleString()} ADS</Descriptions.Item>
+                    </Descriptions><br/><br/>
+                    <Link to='/'><Button type="primary" key="console">메인페이지</Button></Link>,
+                    <Link to='/mypage'><Button key="mypage">마이페이지</Button></Link>
+                </>
+                ]}
+            />
         </Div>
     )
 }

@@ -7,10 +7,6 @@ export const Div = styled.div`
     flex-direction : column;
 `;
 
-export const BottomButton = styled.div`
-    margin-top: 20px;
-`;
-
 export const AmountInput = styled(Input)`
     margin-left: 10px;
     height: 30px;

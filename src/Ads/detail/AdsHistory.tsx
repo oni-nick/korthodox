@@ -35,7 +35,7 @@ function AdsHistory({index} : {index:number}){
       return <p>없음</p>
     }
     else {
-      return <a href={`https://sepolia.etherscan.io/tx/${text}`} target="_blank">{text}</a>
+      return <a href={`https://sepolia.etherscan.io/tx/${text}`} target="_blank">{text.slice(0, 12)}</a>
     }
   }
 

@@ -30,6 +30,14 @@ function AdsHistory({index} : {index:number}){
       });
   }, [])
 
+  function Hash(text : string){
+    if (text == null){
+      return <p>없음</p>
+    }
+    else {
+      return <a href={`https://sepolia.etherscan.io/tx/${text}`} target="_blank">{text}</a>
+    }
+  }
 
   const column : ColumnsType<AdsHistoryType>= [
     {
@@ -59,8 +67,8 @@ function AdsHistory({index} : {index:number}){
     {
       align : 'center',
       title: '거래 해시',
-      dataIndex: 'id',
-      render : (text : string) => <a href={`https://sepolia.etherscan.io/tx/${text}`} target="_blank">{text}</a>
+      dataIndex: 'hash',
+      render : (text : string) => Hash(text)
     },
     {
       align : 'center',

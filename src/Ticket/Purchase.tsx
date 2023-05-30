@@ -4,15 +4,13 @@ import { Button, Checkbox, Descriptions } from "antd";
 import BigNumber from 'bignumber.js';
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { UserInfo, useUserDispatch, useUserState, updateUserContext } from '../context/user'
+import { useUserDispatch, useUserState, updateUserContext } from '../context/user'
 import { dateConverter, UserBalance } from "../Utils";
-import { useSelector } from 'react-redux';
 
 
 function Purchase(){
     const url = useLocation();
     const user = useUserState();
-    // const user_new = useSelector(state : RootState => state.data);
     const dispatch = useUserDispatch();
     const [searchParams, setSearchParams]=useSearchParams();
     const days = searchParams.get('days');
@@ -35,11 +33,8 @@ function Purchase(){
         try {
             setLoading(true);
             const result = await axios.post('/api/user/buyticket', {day : Number(days)});
-            dispatch({type: 'LOG_IN', data: result.data});
-            // updateUserContext(dispatch, result.data);
-            // Console Log
-            console.log('post response user data:', result!);
-            console.log(user);
+            // dispatch({type: 'LOG_IN', data: result.data});
+            updateUserContext(dispatch, result.data);
             const res = await axios.get<UserBalance[] | null>('/api/user/balance');
             if (res.data) {
                 setBalance(res.data)
@@ -51,21 +46,6 @@ function Purchase(){
             setLoading(false);
         }
     };
-    // useEffect(() => {
-    //     axios.post<UserInfo>('/api/user/buyticket', days)
-    //     .then(res => {
-    //         if (res.data){
-    //             return dispatch({type: 'LOG_IN', data: res.data})
-    //         }
-    //     })
-    // })
-
-
-    // Console Log
-
-    console.log(balance);
-
-    console.log(user.expired_date);
 
     return(
         <Div>

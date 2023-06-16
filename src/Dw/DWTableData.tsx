@@ -1,6 +1,7 @@
 import type { ColumnsType } from 'antd/es/table';
 import BigNumber from 'bignumber.js';
 import { Link } from 'react-router-dom';
+import { P_plus, P_minus } from './Styles'
 
 export interface DwHistory {
   amount: string,
@@ -26,6 +27,16 @@ function typeChange(text : string){
   }
 }
 
+function amountViewer (text : string){
+
+  if (text.startsWith('-') == true){
+    const amount = new BigNumber(text.slice(1)).toFormat();
+    return <P_minus> {amount}  </P_minus>
+  } else {
+    return <P_plus> {new BigNumber(text).toFormat()} </P_plus>
+  }
+}
+
 export const columns: ColumnsType<DwHistory> = [
   {
     align : 'center',
@@ -38,7 +49,7 @@ export const columns: ColumnsType<DwHistory> = [
     align : 'center',
     title: '금액',
     dataIndex: 'amount',
-    render: (text) => <p>{new BigNumber(text).toFormat()}</p>
+    render: (text) => amountViewer(text)
   },
   {
     align : 'center',

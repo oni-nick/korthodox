@@ -63,7 +63,14 @@ export const P_Alert = styled.p`
     color : black;
     text-align:center;
 `
-
+export const P_plus = styled.p`
+    color : #3fdc13;
+    text-align:center;
+`
+export const P_minus = styled.p`
+    color : red;
+    text-align:center;
+`
 export const DivWithdraw = styled.div`
     margin : 50px 20px 10px 20px;
     display : flex;

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import axios, { AxiosError } from 'axios';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, Radio } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import type { RadioChangeEvent } from 'antd';
 
 const LoginForm = styled(Form)`
     margin-left: auto;
@@ -34,6 +35,12 @@ const Register = () => {
     const [form] = Form.useForm();
     const [errMessage, setErrMessage] = useState('');
     const navigate = useNavigate();
+    const [type, setType] = useState('라이더');
+
+    const onChange = (e: RadioChangeEvent) => {
+        console.log('radio checked', e.target.value);
+        setType(e.target.value);
+    };
 
     const onReset = () => {
         form.resetFields();
@@ -44,6 +51,7 @@ const Register = () => {
             await axios.post('/api/user/signin', {
                 email: values.email,
                 password: values.pw,
+                level: type
             });
             navigate('/login');
         } catch (e) {
@@ -77,6 +85,12 @@ const Register = () => {
                         <Button type="primary" htmlType="submit">등록하기</Button>&nbsp;&nbsp;
                         <Link to="/login"><Button htmlType="button">취소하기</Button></Link>
                     </ButtonWrapper>
+                </Form.Item>
+                <Form.Item name="level" label="유형" rules={[{required: true}]}>
+                    <Radio.Group onChange={onChange} value={type}>
+                      <Radio value={'라이더'}>라이더</Radio>
+                      <Radio value={'광고주'}>광고주</Radio>
+                    </Radio.Group>
                 </Form.Item>
             </LoginForm>
             {

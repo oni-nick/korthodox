@@ -1,3 +1,4 @@
+import { Card } from "antd";
 import styled from "styled-components"
 
 
@@ -54,11 +55,7 @@ export const StyledH3 = styled.h3 `
   margin: 0px;
 `;
 
-export const StyledPtag = styled.p `
-  color: black;
-  font-size: 24px;
-  white-space: pre-line;
-`;
+
 
 export const StyledSection = styled.section`
   display: grid;
@@ -79,9 +76,6 @@ export const StyledSection = styled.section`
   }
 `;
 
-export const StyledDescDiv = styled.div`
-  margin: 0px 30px 100px 30px;
-`;
 export const StyledFooter = styled.div`
 background-color: black;
 color: white;
@@ -108,3 +102,25 @@ export const Text2 = styled.h3`
     float : right;
     margin : 0px;
 `
+
+export const MainCard = styled(Card)`
+  width : 500px;
+  border-color: skyblue;
+`
+
+export const StyledPtag = styled.p `
+  color: black;
+  font-size: 18px;
+  white-space: pre-line;
+`;
+
+export const StyledTitle = styled.h3 `
+  color: black;
+  font-size: 28px;
+  margin: 0px;
+`;
+
+export const StyledDescDiv = styled.div`
+  margin: 100px 250px 0px 30px;
+  display : flex;
+`;

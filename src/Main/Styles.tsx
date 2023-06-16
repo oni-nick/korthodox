@@ -89,12 +89,6 @@ export const Div = styled.div`
   align-items : center;
   flex-direction : column;
 `
-export const MypageDiv = styled.div`
-  display : flex;
-  align-items : center;
-  flex-direction : column;
-  margin : 70px
-`
 export const Text2 = styled.h3`
     font-size : 14px;
     font-weight : normal;

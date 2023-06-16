@@ -1,10 +1,14 @@
 import { Descriptions, Table } from 'antd';
-import { useUserState, UserInfo } from '../context/user';
-import { Div, MypageDiv } from './Styles';
-import { dateConverter, UserBalance } from '../Utils';
+import { useUserState, UserInfo } from '../../context/user';
+import { MypageDiv, GraphDiv } from './Styles';
+import { dateConverter, UserBalance } from '../../Utils';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import BigNumber from 'bignumber.js';
+import PieGraph from './PieGraph';
+import LineGraph from './LineGraph';
+import { PieData, LineData } from './data';
+
 
 function Mypage(){
     const user = useUserState();
@@ -31,6 +35,13 @@ function Mypage(){
                 <Descriptions.Item label="이용권 만료 기간">{dateConverter(new Date(user.expired_date))}</Descriptions.Item>
                 <Descriptions.Item label="개인 지갑 주소"> {user.address}</Descriptions.Item>
             </Descriptions>
+            <GraphDiv>
+                <PieGraph data={PieData}></PieGraph>
+            </GraphDiv>
+
+            <GraphDiv>
+                <LineGraph data={LineData}></LineGraph>
+            </GraphDiv>
         </MypageDiv>
     );
 }

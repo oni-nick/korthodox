@@ -80,17 +80,17 @@ const Register = () => {
                 <Form.Item name="pw" label="pw" rules={[{required: true}]}>
                     <Input type="password"/>
                 </Form.Item>
-                <Form.Item {...tailLayout}>
-                    <ButtonWrapper>
-                        <Button type="primary" htmlType="submit">등록하기</Button>&nbsp;&nbsp;
-                        <Link to="/login"><Button htmlType="button">취소하기</Button></Link>
-                    </ButtonWrapper>
-                </Form.Item>
                 <Form.Item name="level" label="유형" rules={[{required: true}]}>
                     <Radio.Group onChange={onChange} value={type}>
                       <Radio value={'라이더'}>라이더</Radio>
                       <Radio value={'광고주'}>광고주</Radio>
                     </Radio.Group>
+                </Form.Item>
+                <Form.Item {...tailLayout}>
+                    <ButtonWrapper>
+                        <Button type="primary" htmlType="submit">등록하기</Button>&nbsp;&nbsp;
+                        <Link to="/login"><Button htmlType="button">취소하기</Button></Link>
+                    </ButtonWrapper>
                 </Form.Item>
             </LoginForm>
             {

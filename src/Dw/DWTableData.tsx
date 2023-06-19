@@ -30,10 +30,9 @@ function typeChange(text : string){
 function amountViewer (text : string){
 
   if (text.startsWith('-') == true){
-    const amount = new BigNumber(text.slice(1)).toFormat();
-    return <P_minus> {amount}  </P_minus>
+    return <P_minus> {new BigNumber(text).toFormat()}  </P_minus>
   } else {
-    return <P_plus> {new BigNumber(text).toFormat()} </P_plus>
+    return <P_plus> {'+' + new BigNumber(text).toFormat()} </P_plus>
   }
 }
 

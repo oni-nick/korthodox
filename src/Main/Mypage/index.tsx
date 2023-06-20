@@ -1,61 +1,21 @@
-import { MypageDiv, GraphDiv, StatsDiv, Text, StyledRangePicker } from './Styles';
+import { MypageDiv, StatsDiv, Text, StyledRangePicker, GraphDiv } from './Styles';
 import { Button, DatePicker, Descriptions } from 'antd';
 import { useUserState } from '../../context/user';
 import { dateConverter, UserBalance } from '../../Utils';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import BigNumber from 'bignumber.js';
-import PieGraph from './PieGraph';
-import LineGraph from './LineGraph';
-import { PieData, LineData } from './data';
-
-interface RiderData {
-    date : string;
-    meters : number;
-    reward : string;
-};
-interface AdverData {
-    id: string,
-    title: string,
-    subtitle: string,
-    reward: string,
-    image_id: number,
-    start_date: Date,
-    end_date: Date,
-    user_email: string,
-    data: {
-      id: string,
-      ads_id: string,
-      path: {lattitude: string, longitutde: string}[],
-      meters: number,
-      reward: string,
-      hash: string,
-      start_time: Date,
-      end_time: Date,
-    }[],
-};
-interface AdminData {
-    amount: string,
-    hash: string | '',
-    timestamp: number,
-    type
-       : '입금'
-       | '출금'
-       | '주행보상-${ads.id}'
-       | '광고등록'
-       | '이용권구매'
-       | '코인구매'
-}
-
+import Rider from './Rider';
+import Advertiser from './Advertiser';
+import Admin from './Admin';
+import moment from 'moment';
 
 function Mypage() {
   const user = useUserState();
   const [isFrom, setFrom] = useState('');
   const [isTo, setTo] = useState('');
-  const [riderData, setRiderData] = useState<RiderData[]>([]);
-  const [adverData, setAdverData] = useState<AdverData[]>([]);
-  const [adminData, setAdminData] = useState<AdminData[]>([]);
   const [balance, setBalance] = useState<UserBalance[]>([]);
+  const [userTypeComponent, setUserTypeComponent] = useState<JSX.Element | null>(null);
   const adsBalance = balance.find((b) => b.type === 'ADS')?.available || '0';
 
   // DatePicker 날짜 변화
@@ -64,6 +24,7 @@ function Mypage() {
     setFrom(from);
     setTo(to);
   };
+
 
   // 유저 잔액 확인
   useEffect(() => {
@@ -78,88 +39,18 @@ function Mypage() {
   // 통계 버튼 클릭 시
   // 유저 타입 별 처리
   function getStatistics(from: string, to: string) {
-    if (user.level === '라이더'){
-        axios.get<RiderData>('/api/statistics', {
-            params: {
-              from: from,
-              to: to,
-            },
-          })
-          .then((res) => {
-            if (res.data) {
-                setRiderData([res.data]);
-            }
-          });
-
-    const RiderGraphData = riderData.map((d) => {
-        const data_r = [d.date, d.reward];
-        const data_m = [d.date, d.meters];
-        return {reward : data_r, meters : data_m}
-    })
-    console.log(RiderGraphData);
-    // 막대그래프 데이터 넘겨주면 됨
-    // 라이더 계정이 없어서 코드 동작하는지 확인 못함
-    }
-
-    else if (user.level === '광고주'){
-        axios.get<AdverData>('/api/statistics', {
-            params: {
-              from: from,
-              to: to,
-            },
-          })
-          .then((res) => {
-            if (res.data) {
-                setAdverData([res.data]);
-            }
-          });
-    }
-
-    else if (user.level === '운영자'){
-        axios.get<AdminData>('/api/statistics', {
-            params: {
-              from: from,
-              to: to,
-            },
-          })
-          .then((res) => {
-            if (res.data) {
-                setAdminData([res.data]);
-            }
-          });
-        // adminData.reduce((acc, cur) => )
-    }
-
-    else {
-        // 유저 타입이 null인 경우
+    if (from && to) {
+      if (user.level === '라이더'){
+        setUserTypeComponent(<Rider from={from} to={to}/>)
+      } else if (user.level === '광고주'){
+        setUserTypeComponent(<Advertiser from={from} to={to}/>)
+      } else if (user.level === '운영자'){
+        setUserTypeComponent(<Admin from={from} to={to}/>)
+      } else { // 유저 타입이 null인 경우
+        setUserTypeComponent(null)
+      }
     }
   }
-
-  // 유저 타입 별 Render 함수
-  const renderRider = () => {
-    return (
-        <div>
-            라이더임
-        </div>
-    );
-  };
-
-  const renderAdver = () => {
-    return (
-        <div>
-            광고주임
-        </div>
-    );
-  };
-
-  const renderAdmin = () => {
-    return (
-        <div>
-            운영자임
-        </div>
-    );
-  };
-
 
   return (
     <MypageDiv>
@@ -178,10 +69,7 @@ function Mypage() {
             통계 보기
           </Button>
         </StatsDiv>
-
-        {user.level === '라이더' && renderRider()}
-        {user.level === '광고주' && renderAdver()}
-        {user.level === '운영자' && renderAdmin()}
+        {userTypeComponent}
 
     </MypageDiv>
   );

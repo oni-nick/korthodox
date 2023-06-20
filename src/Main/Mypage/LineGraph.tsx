@@ -1,11 +1,11 @@
 import { ResponsiveLine } from '@nivo/line'
 
-interface LinePoint {
+export interface LinePoint {
     x : string,
     y : number,
 }
 
-interface LineGraphData {
+export interface LineGraphData {
     id: string,
     color: string,
     data : LinePoint[],
@@ -13,72 +13,79 @@ interface LineGraphData {
 
 interface LineGraphProps {
     data: LineGraphData[];
+    axis1 : string,
+    axis2 : string,
 }
 
+const LineGraph = ({ data, axis1, axis2  }: LineGraphProps) => {
+    console.log("LineGraph data:", data);
 
-const LineGraph = ({ data }: LineGraphProps) => (
-    <ResponsiveLine
-        data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-        xScale={{ type: 'point' }}
-        yScale={{
+    return (
+      <>
+        <ResponsiveLine
+          data={data}
+          margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+          xScale={{ type: 'point' }}
+          yScale={{
             type: 'linear',
             min: 'auto',
             max: 'auto',
             stacked: true,
             reverse: false
-        }}
-        yFormat=" >-.2f"
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
+          }}
+          yFormat=" >-.2f"
+          axisTop={null}
+          axisRight={null}
+          axisBottom={{
             tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: '사용자 증감 추이',
+            tickPadding: 10,
+            tickRotation: -45,
+            legend: axis2,
             legendOffset: 36,
             legendPosition: 'middle'
-        }}
-        axisLeft={{
+          }}
+          axisLeft={{
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
-            legendOffset: -40,
+            legend: axis1,
+            legendOffset: -50,
             legendPosition: 'middle'
-        }}
-        pointSize={10}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        pointLabelYOffset={-12}
-        useMesh={true}
-        legends={[
+          }}
+          pointSize={10}
+          pointColor={{ theme: 'background' }}
+          pointBorderWidth={2}
+          pointBorderColor={{ from: 'serieColor' }}
+          pointLabelYOffset={-12}
+          useMesh={true}
+          legends={[
             {
-                anchor: 'bottom-right',
-                direction: 'column',
-                justify: false,
-                translateX: 100,
-                translateY: 0,
-                itemsSpacing: 0,
-                itemDirection: 'left-to-right',
-                itemWidth: 80,
-                itemHeight: 20,
-                itemOpacity: 0.75,
-                symbolSize: 12,
-                symbolShape: 'circle',
-                symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemBackground: 'rgba(0, 0, 0, .03)',
-                            itemOpacity: 1
-                        }
-                    }
-                ]
+              anchor: 'bottom-right',
+              direction: 'column',
+              justify: false,
+              translateX: 100,
+              translateY: 0,
+              itemsSpacing: 0,
+              itemDirection: 'left-to-right',
+              itemWidth: 80,
+              itemHeight: 20,
+              itemOpacity: 0.75,
+              symbolSize: 12,
+              symbolShape: 'circle',
+              symbolBorderColor: 'rgba(0, 0, 0, .5)',
+              effects: [
+                {
+                  on: 'hover',
+                  style: {
+                    itemBackground: 'rgba(0, 0, 0, .03)',
+                    itemOpacity: 1
+                  }
+                }
+              ]
             }
-        ]}
-    />
-)
+          ]}
+        />
+      </>
+    );
+  };
 export default LineGraph;

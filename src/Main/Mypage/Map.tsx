@@ -120,11 +120,7 @@ export default function Map( { data } : any ) {
   return (
     <>
       <Div>
-        <MapContainer id="map"></MapContainer> <br/><br/>
-        <Descriptions bordered size="default">
-          <Descriptions.Item label="리워드">{adsHistory?.reward} ADS</Descriptions.Item>
-          <Descriptions.Item label="이동 거리">{adsHistory?.meters} m</Descriptions.Item>
-        </Descriptions>
+        <MapContainer id="map"></MapContainer>
       </Div>
     </>
   );

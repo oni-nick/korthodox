@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Collapse, Typography } from "antd";
 import Map from "./Map";
+import { dateConverter } from "../../Utils";
 
 interface AdvertiserData {
   id: string;
@@ -23,7 +24,6 @@ interface AdvertiserData {
     end_time: Date;
   }[];
 }
-
 interface AdvertiserProps {
   from: string;
   to: string;
@@ -40,20 +40,42 @@ const Advertiser: React.FC<AdvertiserProps> = ({ from, to }) => {
         },
       })
       .then((res) => {
-        if (res.data) {
+        // 수정코드
+        // Check if res.data is an array before setting the state
+        if (Array.isArray(res.data)) {
           setAdvertiserData(res.data);
+        } else {
+          setAdvertiserData([res.data]); // if res.data is an object, wrap it in an array
         }
+        // 이전코드
+        // if (res.data) {
+        //   setAdvertiserData(res.data);
+        // }
       });
   }, []);
 
-  const extractedPairs = Object.entries(advertiserData).map(([key, value]) => `${key}: ${value}`);
+
+  // const extractedPairs = Object.entries(advertiserData).map(([key, value]) => `${key}: ${value}`);
+  const AdsData = Object.entries(advertiserData).map(([key, value]) => {
+    if (key === 'id'){ return '광고 번호 : ' + value }
+    else if (key === 'title'){ return '광고 이름 : ' + value }
+    else if (key === 'subtitle'){ return '광고 상세 : ' + value }
+    else if (key === 'reward'){ return '리워드 : ' + value }
+    else if (key === 'start_date'){ return '시작 날짜 : ' + value}
+    else if (key === 'end_date'){ return '종료 날짜 : ' + value }
+    else {return ''}
+  })
+  console.log(Object.entries(advertiserData))
+  console.log(AdsData)
+
+
+  // 주행기록 추출
   const tmp = Object.entries(advertiserData).map(([key, value]) => {
     if(key === 'data') {
         return value;
     }
   });
   const data = tmp[8]
-  console.log(data)
 
   return (
     <>
@@ -62,14 +84,33 @@ const Advertiser: React.FC<AdvertiserProps> = ({ from, to }) => {
           key={"1"}
           header={
             <div>
-              {extractedPairs.map((pair) => (
-                <div key={pair}>{pair}</div>
+              {AdsData.map((data, index) => (
+                <div key={index}>{data}</div>
               ))}
             </div>
           }
         >
         {data && <Map data={data} />}
         </Collapse.Panel>
+      </Collapse>
+      <Collapse accordion={true}>
+        {advertiserData.map((data, index) => (
+          <Collapse.Panel
+            key={index}
+            header={
+              <div>
+                <div>광고 번호 : {data.id}</div>
+                <div>광고 이름 : {data.title}</div>
+                <div>광고 상세 : {data.subtitle}</div>
+                <div>리워드 : {data.reward}</div>
+                <div>시작 날짜 : {data.start_date.toString().slice(0, 12)}</div>
+                <div>종료 날짜 : {data.end_date.toString().slice(0, 10)}</div>
+              </div>
+            }
+          >
+            {data.data && <Map data={data.data} />}
+          </Collapse.Panel>
+        ))}
       </Collapse>
     </>
   );

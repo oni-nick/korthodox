@@ -1,7 +1,7 @@
 import { ResponsivePie } from '@nivo/pie'
 
 
-interface PieGraphData {
+export interface PieGraphData {
     id: string,
     label: string,
     value: number,

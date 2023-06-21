@@ -18,8 +18,6 @@ interface LineGraphProps {
 }
 
 const LineGraph = ({ data, axis1, axis2  }: LineGraphProps) => {
-    console.log("LineGraph data:", data);
-
     return (
       <>
         <ResponsiveLine

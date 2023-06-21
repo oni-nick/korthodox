@@ -7,9 +7,34 @@ export const MypageDiv = styled.div`
   flex-direction : column;
   margin : 70px
 `
-export const GraphDiv = styled.div`
+// Admin Page ---
+export const AdminDiv = styled.div`
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+`
+export const PieGraphDiv = styled.div`
     width : 800px;
     height : 500px;
+    margin-bottom : 70px;
+`
+// ------------
+export const RiderDiv = styled.div`
+  display : flex;
+  flex-direction : row;
+  align-items : center;
+`
+export const LineGraphDiv = styled.div`
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    width : 650px;
+    height : 350px;
+`
+export const Legend = styled.h3`
+    font-size : 16px;
+    font-weight : bold;
+    text-align : center;
 `
 export const StatsDiv = styled.div`
   display : flex;

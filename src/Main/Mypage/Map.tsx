@@ -78,17 +78,21 @@ export default function Map( { data } : any ) {
       imageSize2 = new window.kakao.maps.Size(50, 45),
       imageOption2 = {offset: new window.kakao.maps.Point(15, 43)};
 
-      // 색 지정을 위한 배열
-      const colors = ["blue", "red", "green", "yellow"];
-
+      // path 랜덤 색 지정
+      const getRandomColor = () => {
+        const r = Math.floor(Math.random() * 256).toString(16).padStart(2, '0');
+        const g = Math.floor(Math.random() * 256).toString(16).padStart(2, '0');
+        const b = Math.floor(Math.random() * 256).toString(16).padStart(2, '0');
+        return `#${r}${g}${b}`;
+      };
       // -- 경로 표시 코드 (polyline) -------------------------------------------------------------
-        polyPath.forEach((p, index)=> {
-          const colorIndex = index % colors.length;
+        polyPath.forEach((p)=> {
+          const colorIndex = getRandomColor();
           const polyline = new window.kakao.maps.Polyline({
               map: map,
               path : p,
               strokeWeight: 4,
-              strokeColor: colors[colorIndex],
+              strokeColor: colorIndex,
               strokeOpacity: 0.7,
               strokeStyle: 'solid'
             });

@@ -31,6 +31,11 @@ interface AdvertiserProps {
 const Advertiser: React.FC<AdvertiserProps> = ({ from, to }) => {
   const [advertiserData, setAdvertiserData] = useState<AdvertiserData[]>([]);
   const [isNone, setNone] = useState(true);
+  const riderTotalAmount = advertiserData.map((data, index) =>{
+    return data.data.reduce((acc, cur)=>{
+      return acc+ parseFloat(cur.reward);
+    }, 0)
+  })
   useEffect(() => {
     axios
       .get<AdvertiserData[]>("/api/statistics", {
@@ -66,11 +71,12 @@ const Advertiser: React.FC<AdvertiserProps> = ({ from, to }) => {
         >
           <Descriptions bordered size="default">
             <Descriptions.Item label="광고 번호">{data.id} 번</Descriptions.Item>
+            <Descriptions.Item label="리워드 지급">{riderTotalAmount[index]} ADS</Descriptions.Item>
+            <Descriptions.Item label="광고 리워드"> {data.reward} ADS</Descriptions.Item>
             <Descriptions.Item label="광고 이름">{data.title}</Descriptions.Item>
-            <Descriptions.Item label="광고 내용">{data.subtitle}</Descriptions.Item>
-            <Descriptions.Item label="리워드 지급">{data.reward} ADS</Descriptions.Item>
             <Descriptions.Item label="시작 날짜">{data.start_date.toString().slice(0, 10)}</Descriptions.Item>
             <Descriptions.Item label="종료 날짜">{data.end_date.toString().slice(0, 10)}</Descriptions.Item>
+            <Descriptions.Item label="광고 내용">{data.subtitle}</Descriptions.Item>
           </Descriptions> <br/>
           {data.data && <Map data={data.data} />}
         </Collapse.Panel>

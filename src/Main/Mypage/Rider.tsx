@@ -34,7 +34,7 @@ const Rider : React.FC<RiderProps> = ({from, to}) => {
 
     const RewardData: LinePoint[] = riderData.map((d, index) => ({
         x: d.date,
-        y: parseInt(d.reward),
+        y: parseFloat(d.reward),
     }));
     const MetersData: LinePoint[] = riderData.map((d) => ({
         x: d.date,

@@ -44,8 +44,13 @@ const Admin : React.FC<AdminProps> = ({from, to}) => {
         })
         .then((res) => {
             if (res.data) {
-                setNone(false)
-                setAdminData(res.data);
+                if(res.data.length === 0){
+                    setNone(true)
+                }
+                else{
+                    setNone(false)
+                    setAdminData(res.data);
+                }
             }
         });
     }, [from, to]);
@@ -83,7 +88,7 @@ const Admin : React.FC<AdminProps> = ({from, to}) => {
     const pieChartData: PieGraphData[] = totalAmountArray.map((data) => ({
         id: data.type,
         label: data.type,
-        value: data.amount,
+        value: Math.abs(data.amount),
         color: colors[data.type] || "gray", // use a default color if the type is not found in colors
       }));
 

@@ -39,29 +39,28 @@ const Rider : React.FC<RiderProps> = ({from, to}) => {
         y: d.meters,
     }));
 
-    const RiderReward : LineGraphData[]  = [{
-        id : 'reward',
-        color : 'blue',
-        data : RewardData
-    }]
+    const RiderReward : LineGraphData[]  = [
+        {
+            id : 'reward',
+            color : 'blue',
+            data : RewardData
+        }]
 
     const RiderMeters : LineGraphData[] = [{
         id : 'meters',
         color :"hsl(300, 70%, 50%)",
         data : MetersData,
     }]
-    console.log(RiderReward)
-    console.log(RiderMeters)
 
     return(
     <>
        {riderData.length > 0 ? (
         <div>
             <GraphDiv>
-              <LineGraph data={RiderReward} axis1={'Reward'} axis2={'Date'} />
+                <LineGraph data={RiderMeters} axis1={'Meters'} axis2={'Date'}  />
             </GraphDiv>
             <GraphDiv>
-                <LineGraph data={RiderMeters} axis1={'Meters'} axis2={'Date'}  />
+                <LineGraph data={RiderReward} axis1={'Reward'} axis2={'Date'} />
             </GraphDiv>
         </div>
       ) : (

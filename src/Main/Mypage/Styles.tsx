@@ -24,6 +24,10 @@ export const StyledRangePicker = styled(DatePicker.RangePicker)`
   margin-right : 16px;
   margin-left : 16px;
 `;
+export const StyledDatePicker = styled(DatePicker)`
+margin-right : 16px;
+  margin-left : 16px;
+`;
 
 // Map Style Component
 export const Div = styled.div`

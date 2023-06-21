@@ -1,4 +1,4 @@
-import { MypageDiv, StatsDiv, Text, StyledRangePicker, GraphDiv } from './Styles';
+import { MypageDiv, StatsDiv, Text, StyledRangePicker, StyledDatePicker } from './Styles';
 import { Button, DatePicker, Descriptions } from 'antd';
 import { useUserState } from '../../context/user';
 import { dateConverter, UserBalance } from '../../Utils';
@@ -8,7 +8,7 @@ import BigNumber from 'bignumber.js';
 import Rider from './Rider';
 import Advertiser from './Advertiser';
 import Admin from './Admin';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 function Mypage() {
   const user = useUserState();
@@ -18,13 +18,21 @@ function Mypage() {
   const [userTypeComponent, setUserTypeComponent] = useState<JSX.Element | null>(null);
   const adsBalance = balance.find((b) => b.type === 'ADS')?.available || '0';
 
-  // DatePicker 날짜 변화
-  const handleRangePickerChange = (dates: any, dateStrings: [string, string]) => {
+  // RangePicker 운영자, 광고주는 날짜 제한 X
+  const rangePickerChange = (dates: any, dateStrings: [string, string]) => {
     const [from, to] = dateStrings;
     setFrom(from);
     setTo(to);
   };
-
+  // DatePicker 라이더는 1주일 단위만 가능
+  const datePickerChange = (date : dayjs.Dayjs | null) => {
+    if (date) {
+      const to = date.format('YYYY-MM-DD');
+      const from = date.subtract(7, 'days').format('YYYY-MM-DD');
+      setFrom(from);
+      setTo(to);
+    }
+  };
 
   // 유저 잔액 확인
   useEffect(() => {
@@ -64,7 +72,9 @@ function Mypage() {
         </Descriptions>
         <StatsDiv>
           <Text>날짜 선택 </Text>
-          <StyledRangePicker onChange={handleRangePickerChange} />
+          {user.level === '라이더'
+          ? <StyledDatePicker onChange={datePickerChange}/>
+          :<StyledRangePicker onChange={rangePickerChange} />}
           <Button type="primary" onClick={() => getStatistics(isFrom, isTo)}>
             통계 보기
           </Button>

@@ -37,16 +37,16 @@ const LineGraph = ({ data, axis1, axis2  }: LineGraphProps) => {
           axisTop={null}
           axisRight={null}
           axisBottom={{
-            tickSize: 5,
+            tickSize: 1,
             tickPadding: 10,
-            tickRotation: -45,
+            tickRotation: 0,
             legend: axis2,
             legendOffset: 36,
             legendPosition: 'middle'
           }}
           axisLeft={{
-            tickSize: 5,
-            tickPadding: 5,
+            tickSize: 1,
+            tickPadding: 1,
             tickRotation: 0,
             legend: axis1,
             legendOffset: -50,
@@ -58,6 +58,7 @@ const LineGraph = ({ data, axis1, axis2  }: LineGraphProps) => {
           pointBorderColor={{ from: 'serieColor' }}
           pointLabelYOffset={-12}
           useMesh={true}
+          colors={({ id }) => id === 'reward' ? 'hsl(201.21546961325967, 73.87755102040816%, 48.03921568627451%)' : 'hsl(136.875, 79.3388429752066%, 52.54901960784314%)'}
           legends={[
             {
               anchor: 'bottom-right',

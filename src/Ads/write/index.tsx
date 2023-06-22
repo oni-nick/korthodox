@@ -30,7 +30,7 @@ function CreateAds(){
   const onFinish = async (values: any) => {
     const imageId = values.image[0].response.id;
     const startDate = values.period[0].toISOString();
-    const endDate = values.period[0].toISOString();
+    const endDate = values.period[1].toISOString();
 
     const adsData = {
       title: values.title,

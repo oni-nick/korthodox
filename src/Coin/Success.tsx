@@ -30,7 +30,7 @@ export function SuccessPage() {
                         <Descriptions.Item label="주문 아이디">{searchParams.get('orderId')}</Descriptions.Item>
                         <Descriptions.Item label="결제 금액">{Number(searchParams.get('amount')).toLocaleString()} ADS</Descriptions.Item>
                     </Descriptions><br/><br/>
-                    <Link to='/'><Button type="primary" key="console">메인페이지</Button></Link>,
+                    <Link to='/'><Button type="primary" key="console">메인페이지</Button></Link>
                     <Link to='/mypage'><Button key="mypage">마이페이지</Button></Link>
                 </>
                 ]}

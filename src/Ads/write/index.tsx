@@ -13,6 +13,7 @@ import axios from 'axios';
 import { CreateAdsForm, CreateAdsFormWrapper } from '../Styles';
 import { RcFile } from "antd/es/upload";
 import RenderBalance from "./RenderBalance";
+import { FlexBox } from "./Styles";
 
 function CreateAds(){
   const { RangePicker } = DatePicker;
@@ -72,11 +73,12 @@ function CreateAds(){
           <TextArea rows={2} />
         </Form.Item>
 
-        <Form.Item name="price" label="광고 비용">
-          <InputNumber style={{width : '190px'}} />
-        </Form.Item>
-
-        <RenderBalance/>
+        <FlexBox>
+          <Form.Item name="price" label="광고 비용">
+            <InputNumber style={{width : '190px'}} />
+          </Form.Item>
+          <RenderBalance/>
+        </FlexBox>
 
         <Form.Item name="period" label="광고 기간 ">
           <RangePicker />

@@ -29,11 +29,15 @@ function RenderBalance(){
         return(<></>);
     }
 
+    const adsBalance = balance.find(b => b.type === 'ADS');
+
     return(
         <div style={{ marginLeft : '20px'}}>
-            <Text>{new BigNumber(balance[1].available).toFormat()} {balance[1].type}</Text>
-            <br/>
-            <Text>{new BigNumber(balance[2].available).toFormat()} {balance[2].type}</Text>
+          {
+            adsBalance != null
+              ? <Text>{new BigNumber(adsBalance.available).toFormat()} {adsBalance.type}</Text>
+              : ''
+          }
         </div>
     );
 }

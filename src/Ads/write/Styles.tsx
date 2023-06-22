@@ -1,5 +1,8 @@
 import styled from "styled-components"
-export {}
+
+export const FlexBox = styled.div`
+    display : flex;
+`
 
 export const Text = styled.h3`
     font-size : 14px;

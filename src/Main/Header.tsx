@@ -31,6 +31,7 @@ function Header(){
             </StyledHeaderMenu>
             <Spacer></Spacer>
             <StyledHeaderMenu>
+                {user.email + ' ' + user.level + '님'}
                 {
                     !user.email
                         ?   <li>

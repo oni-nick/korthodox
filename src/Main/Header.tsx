@@ -31,13 +31,13 @@ function Header(){
             </StyledHeaderMenu>
             <Spacer></Spacer>
             <StyledHeaderMenu>
-                {user.email + ' ' + user.level + '님'}
                 {
                     !user.email
                         ?   <li>
                                 <Anchor href="/login"><p><UserOutlined />로그인</p></Anchor>
                             </li>
                         :   <>
+                                {user.email + ' ' + user.level + '님'}
                                 <div style={{marginRight : '30px'}}>
                                     <></>
                                 </div>

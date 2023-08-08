@@ -1,23 +1,9 @@
-import { UserOutlined } from '@ant-design/icons';
-import axios from 'axios';
 import { StyledHeader, StyledHeaderLogo, StyledHeaderMenu, Spacer, Anchor } from "./Styles"
-import { useUserDispatch, useUserState } from '../context/user';
-import adsrider from '../src_assets/adsrider.png'
+
 import kom from '../src_assets/kom-logo.png'
 
-import { useNavigate } from "react-router-dom";
-import { Button, Dropdown } from 'antd';
-import type { MenuProps } from 'antd';
 
 function Header(){
-    const user = useUserState();
-    const dispatch = useUserDispatch();
-    const navigate = useNavigate();
-    const doLogOut = () => {
-        dispatch({ type: 'LOG_OUT' });
-        axios.get('/api/user/logout');
-        navigate("/");
-    };
 
     return(
         <StyledHeader>

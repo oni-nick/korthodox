@@ -12,11 +12,10 @@ function Header(){
             </Anchor>
             <Spacer></Spacer>
             <StyledHeaderMenu>
-                <li><Anchor href="/ticket"><p>뉴스</p></Anchor></li>
-                <li><Anchor href="/coin"><p>동방정교회</p></Anchor></li>
-                <li><Anchor href="/ads"><p>문서</p></Anchor></li>
-                <li><Anchor href="/dw"><p>영성</p></Anchor></li>
-                <li><Anchor href="/dw"><p>역사</p></Anchor></li>
+                <li><Anchor href="/org"><p>조직</p></Anchor></li>
+                <li><Anchor href="/news"><p>뉴스</p></Anchor></li>
+                <li><Anchor href="/docs"><p>문서</p></Anchor></li>
+                <li><Anchor href="https://web.archive.org/web/20080820091437/http://www.korthodox.org/index.html" target="_blank"><p>아카이브</p></Anchor></li>
             </StyledHeaderMenu>
             <Spacer></Spacer>
 

@@ -1,6 +1,18 @@
 import { Card } from "antd";
 import styled from "styled-components"
 
+export const StyledSection = styled.section`
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+  align-items : center;
+  margin-bottom : 100px;
+`;
+export const StyledDescDiv = styled.div`
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+`;
 export const StyledHeader = styled.nav`
     display: flex;
     justify-content: space-between;
@@ -27,10 +39,10 @@ export const StyledHeaderMenu = styled.ul`
     align-items: center;
     & > li {
         text-align: center;
-        width: 120px;
+        width: 160px;
         margin-right: 20px;
         flex: 1;
-        font-size : 20px;
+        font-size : 30px;
     }
     & > li:hover{
         opacity : 0.7;
@@ -54,15 +66,6 @@ export const StyledH3 = styled.h3 `
   color: black;
   font-size: 48px;
   margin: px;
-`;
-
-
-
-export const StyledSection = styled.section`
-  display : flex;
-  flex-direction : column;
-  justify-content : center;
-  align-items : center;
 `;
 
 export const StyledFooter = styled.div`
@@ -107,13 +110,7 @@ export const MainDiv = styled.div `
   flex-direction : row;
   align-items : center;
   margin-top : 70px;
-  margin-bottom : 100px;
-`;
-
-export const StyledDescDiv = styled.div`
-  display : flex;
-  flex-direction : column;
-  justify-content : center;
+  margin-bottom : 60px;
 `;
 
 export const Card_Div = styled.div`

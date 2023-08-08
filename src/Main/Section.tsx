@@ -1,12 +1,15 @@
-import img04 from '../src_assets/04.jpg'
-import img02 from '../src_assets/05.jpg'
 import img01 from '../src_assets/01.jpg'
+import img02 from '../src_assets/05.jpg'
 import img03 from '../src_assets/03.jpg'
-import {StyledH3, StyledPtag, StyledSection, StyledDescDiv, MainDiv, TextDiv} from "./Styles"
+import img04 from '../src_assets/04.jpg'
+import map from '../src_assets/map.jpg'
+import {StyledH3, StyledPtag, StyledSection, StyledDescDiv, MainDiv} from "./Styles"
+import styled from "styled-components"
 import { CardDiv, Card_Div } from "./Styles";
 import { Link } from "react-router-dom";
 import { Card } from 'antd'
 import Meta from 'antd/es/card/Meta';
+import { Avatar, List } from 'antd';
 
 type DescriptionType = {
   key : number;
@@ -21,58 +24,66 @@ function Section(){
         <StyledSection>
           <StyledDescDiv>
             <MainDiv>
-            <div>
+              <div>
                 <img src={img02} width={900} alt="desc"/>
               </div>
               <div>
                 <img src={img04} width={900} alt="desc"/>
               </div>
             </MainDiv>
+            <Div2>
+              <ol>
+              <Head>8.13 오순절 후 10번째 <Red>주일</Red></Head>
+              <Desc>09:30 3,6시과; 10:00 성찬예배</Desc><br/>
+              <Head>8.19 주변모 축일<Blue> 토요일</Blue></Head>
+              <Desc>09:30 3,6시과; 10:00 성찬예배</Desc><br/>
+              <Head>8.20 오순절 후 11번째 <Red>주일</Red></Head>
+              <Desc>09:30 3,6시과; 10:00 성찬예배</Desc><br/>
+              <Head>8.27 오순절 후 12번째 <Red>주일</Red></Head>
+              <Desc>09:30 3,6시과; 10:00 성찬예배</Desc><br/>
+              <Head>8.28 성모 안식 축일 <Blue>월요일</Blue></Head>
+              <Desc>09:30 3,6시과; 10:00 성찬예배</Desc><br/>
+              </ol>
+            </Div2>
+            <MapDiv>
+                <img src={map} width={400} alt="desc"/>
+            </MapDiv>
           </StyledDescDiv>
-          <Card_Div>
-            <CardDiv>
-              <Link to='/ticket/2000?price=2000&days=1'>
-                <Card
-                      hoverable
-                      style={{ width: 360, marginRight : '50px' }}
-                      cover={<img alt="2,000 ads" src={img01} style={ {width : '360px', height : '250px'} }/>}
-                    >
-                        <Meta title="1일 이용권" description="1일 동안 AdsRider 서비스를 이용할 수 있습니다. " />
-                </Card>
-              </Link>
-              <Link to='/ticket/7000?price=7000&days=30'>
-                <Card
-                      hoverable
-                      style={{ width: 360, marginRight : '50px' }}
-                      cover={<img alt="7,000 ads" src={img03} style={ {width : '360px', height : '250px'} }/>}
-                    >
-                      <Meta title="30일 이용권" description="한달 동안 AdsRider 서비스를 이용할 수 있습니다. " />
-                </Card>
-              </Link>
-            </CardDiv>
-            <CardDiv>
-              <Link to='/ticket/2000?price=2000&days=1'>
-                <Card
-                      hoverable
-                      style={{ width: 360, marginRight : '50px' }}
-                      cover={<img alt="2,000 ads" src={img01} style={ {width : '360px', height : '250px'} }/>}
-                    >
-                        <Meta title="1일 이용권" description="1일 동안 AdsRider 서비스를 이용할 수 있습니다. " />
-                </Card>
-              </Link>
-              <Link to='/ticket/7000?price=7000&days=30'>
-                <Card
-                      hoverable
-                      style={{ width: 360, marginRight : '50px' }}
-                      cover={<img alt="7,000 ads" src={img01} style={ {width : '360px', height : '250px'} }/>}
-                    >
-                      <Meta title="30일 이용권" description="한달 동안 AdsRider 서비스를 이용할 수 있습니다. " />
-                </Card>
-              </Link>
-            </CardDiv>
-          </Card_Div>
         </StyledSection>
       </>
     )
 }
+
+const Div2 = styled.div`
+    text-align : center;
+    font-size : 25px;
+`;
+const MapDiv = styled.div`
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+`;
+const Title = styled.h1`
+  font-size : 32px;
+  margin-bottom : 20px;
+`
+const Head = styled.p`
+    text-align : center;
+    margin : 0px;
+`;
+
+const Desc = styled.p`
+    text-align : center;
+    margin : 0px;
+    font-size : 20px;
+    color : gray;
+`;
+const Red = styled.text`
+  color : red;
+`
+const Blue = styled.text`
+  color : blue;
+`
+
+
 export default Section;

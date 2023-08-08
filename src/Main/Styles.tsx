@@ -18,7 +18,9 @@ export const StyledHeader = styled.nav`
 export const StyledHeaderLogo = styled.div`
     font-size: 28px;
 `;
-
+export const TextDiv = styled.div`
+margin : 100px;
+`
 export const StyledHeaderMenu = styled.ul`
     display: flex;
     list-style: none;
@@ -52,32 +54,20 @@ export const Anchor = styled.a`
 export const StyledH3 = styled.h3 `
   color: black;
   font-size: 48px;
-  margin: 0px;
+  margin: px;
 `;
 
 
 
 export const StyledSection = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
-  width: 100%;
-  margin-bottom: 200px;
-  /* height: 800px; */
-  & > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media screen and (max-width: 900px) {
-    grid-template-columns: 1fr;
-    margin-bottom: 0px;
-  }
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+  align-items : center;
 `;
 
 export const StyledFooter = styled.div`
-background-color: black;
+background-color: #1ba5dc;
 color: white;
 padding-left: 100px;
 padding-top: 100px;
@@ -113,8 +103,38 @@ export const StyledTitle = styled.h3 `
   font-size: 28px;
   margin: 0px;
 `;
+export const MainDiv = styled.div `
+  display : flex;
+  flex-direction : row;
+  align-items : center;
+  margin-top : 70px;
+  margin-bottom : 100px;
+`;
 
 export const StyledDescDiv = styled.div`
-  margin: 100px 250px 0px 30px;
   display : flex;
+  flex-direction : column;
+  justify-content : center;
 `;
+
+export const Card_Div = styled.div`
+    display : flex;
+    align-items : center;
+    flex-direction : column;
+    margin-top : 30px;
+    margin-bottom : 100px;
+`
+export const CardDiv = styled.div`
+    display : flex;
+    justify-content : center;
+    flex-direction : row;
+    margin-bottom : 40px;
+    padding-bottom : 25px;
+
+`
+export const Text = styled.h3`
+    font-size : 22px;
+    font-weight : normal;
+    margin : 30px;
+    float : center;
+`

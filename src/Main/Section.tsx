@@ -1,5 +1,12 @@
+import img04 from '../src_assets/04.jpg'
+import img02 from '../src_assets/05.jpg'
 import img01 from '../src_assets/01.jpg'
-import {StyledH3, StyledPtag, StyledSection, StyledDescDiv} from "./Styles"
+import img03 from '../src_assets/03.jpg'
+import {StyledH3, StyledPtag, StyledSection, StyledDescDiv, MainDiv, TextDiv} from "./Styles"
+import { CardDiv, Card_Div } from "./Styles";
+import { Link } from "react-router-dom";
+import { Card } from 'antd'
+import Meta from 'antd/es/card/Meta';
 
 type DescriptionType = {
   key : number;
@@ -11,60 +18,61 @@ type DescriptionType = {
 function Section(){
     return (
     <>
-      {
-        descriptions.map(d => (
-          <StyledSection>
-          <div>
-            <img src={d.image} width={640} alt="desc"/>
-          </div>
+        <StyledSection>
           <StyledDescDiv>
-            <StyledH3>{d.title}</StyledH3>
-            <StyledPtag>
-              {d.description}
-            </StyledPtag>
+            <MainDiv>
+            <div>
+                <img src={img02} width={900} alt="desc"/>
+              </div>
+              <div>
+                <img src={img04} width={900} alt="desc"/>
+              </div>
+            </MainDiv>
           </StyledDescDiv>
+          <Card_Div>
+            <CardDiv>
+              <Link to='/ticket/2000?price=2000&days=1'>
+                <Card
+                      hoverable
+                      style={{ width: 360, marginRight : '50px' }}
+                      cover={<img alt="2,000 ads" src={img01} style={ {width : '360px', height : '250px'} }/>}
+                    >
+                        <Meta title="1일 이용권" description="1일 동안 AdsRider 서비스를 이용할 수 있습니다. " />
+                </Card>
+              </Link>
+              <Link to='/ticket/7000?price=7000&days=30'>
+                <Card
+                      hoverable
+                      style={{ width: 360, marginRight : '50px' }}
+                      cover={<img alt="7,000 ads" src={img03} style={ {width : '360px', height : '250px'} }/>}
+                    >
+                      <Meta title="30일 이용권" description="한달 동안 AdsRider 서비스를 이용할 수 있습니다. " />
+                </Card>
+              </Link>
+            </CardDiv>
+            <CardDiv>
+              <Link to='/ticket/2000?price=2000&days=1'>
+                <Card
+                      hoverable
+                      style={{ width: 360, marginRight : '50px' }}
+                      cover={<img alt="2,000 ads" src={img01} style={ {width : '360px', height : '250px'} }/>}
+                    >
+                        <Meta title="1일 이용권" description="1일 동안 AdsRider 서비스를 이용할 수 있습니다. " />
+                </Card>
+              </Link>
+              <Link to='/ticket/7000?price=7000&days=30'>
+                <Card
+                      hoverable
+                      style={{ width: 360, marginRight : '50px' }}
+                      cover={<img alt="7,000 ads" src={img01} style={ {width : '360px', height : '250px'} }/>}
+                    >
+                      <Meta title="30일 이용권" description="한달 동안 AdsRider 서비스를 이용할 수 있습니다. " />
+                </Card>
+              </Link>
+            </CardDiv>
+          </Card_Div>
         </StyledSection>
-        ))
-      }
       </>
-    );
+    )
 }
-
-const descriptions: DescriptionType[] = [
-  {
-    key : 1,
-    image: img01,
-    title: '서비스 소개',
-    description: 'AdsRider는 서비스는 암호화폐 리워드를 지급하는 자전거 광고 플랫폼입니다.\n\
-      광고를 탑승한 자전거 라이더들은 광고주로부터 암호화폐로 보상을 받을 수 있습니다.\n\
-    ',
-  },
-  {
-    key : 2,
-    image: img01,
-    title: '코인 리워드',
-    description: 'AdsRider는 암호화페 리워드를 지급 합니다.\n\
-      시용자들은 자전거를 이용하면서 광고를 보고 리워드를 얻을 수 있습니다.\n\
-      즐거운 라이딩과 함께 암호화폐로 보상을 받아보세요.\n\
-      '
-      ,
-  },
-  {
-    key : 3,
-    image: img01,
-    title: '광고 효과',
-    description: '광고주들은 자전거를 통해 다양한 사람들에게 광고를 전달할 수 있습니다.\n\
-      또한 블록체인을 통해 광고 내역이 투명하게 관리됩니다.\n\
-      효과적인 광고 타겟팅과 투명한 광고 내역을 통해 광고 효과를 극대화하세요!\n\
-      ',
-  },
-  {
-    key : 4,
-    image: img01,
-    title: '코인 구매 기능',
-    description: 'ADS 코인을 구매하고 원하는 만큼 서비스를 이용하세요!\n\
-    자전거 사용 리워드로 받은 ADS 코인을 플랫폼 내에서 거래할 수도 있습니다.\n\
-    ',
-  },
-];
 export default Section;

@@ -1,8 +1,8 @@
 import { Div, Text, CardDiv, Card_Div } from "./Styles";
 import { Button, Card } from 'antd'
-import img04 from '../src_assets/04.jpg'
-import img05 from '../src_assets/05.jpg'
-import img06 from '../src_assets/06.jpg'
+import img04 from '../src_assets/01.jpg'
+import img05 from '../src_assets/03.jpg'
+import img06 from '../src_assets/01.jpg'
 import { useUserState } from "../context/user";
 import { Link } from "react-router-dom";
 
@@ -34,6 +34,26 @@ function Ticket(){
             <Card
                   hoverable
                   style={{ width: 360, marginRight : '50px' }}
+                  cover={<img alt="2,000 ads" src={img04} style={ {width : '360px', height : '250px'} }/>}
+                >
+                    <Meta title="1일 이용권" description="1일 동안 AdsRider 서비스를 이용할 수 있습니다. " />
+            </Card>
+          </Link>
+          <Link to='/ticket/7000?price=7000&days=30'>
+            <Card
+                  hoverable
+                  style={{ width: 360, marginRight : '50px' }}
+                  cover={<img alt="7,000 ads" src={img05} style={ {width : '360px', height : '250px'} }/>}
+                >
+                  <Meta title="30일 이용권" description="한달 동안 AdsRider 서비스를 이용할 수 있습니다. " />
+            </Card>
+          </Link>
+        </CardDiv>
+        <CardDiv>
+          <Link to='/ticket/2000?price=2000&days=1'>
+            <Card
+                  hoverable
+                  style={{ width: 360, marginRight : '50px' }}
                   cover={<img alt="2,000 ads" src={img04} />}
                 >
                     <Meta title="1일 이용권" description="1일 동안 AdsRider 서비스를 이용할 수 있습니다. " />
@@ -46,15 +66,6 @@ function Ticket(){
                   cover={<img alt="7,000 ads" src={img05} />}
                 >
                   <Meta title="30일 이용권" description="한달 동안 AdsRider 서비스를 이용할 수 있습니다. " />
-            </Card>
-          </Link>
-          <Link to='/ticket/30000?price=30000&days=365'>
-            <Card
-                  hoverable
-                  style={{ width: 360, marginRight : '50px' }}
-                  cover={<img alt="30,000 ads" src={img06}/>}
-                >
-                  <Meta title="365일 이용권" description="1년 동안 AdsRider 서비스를 이용할 수 있습니다. " />
             </Card>
           </Link>
         </CardDiv>

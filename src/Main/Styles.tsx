@@ -1,7 +1,6 @@
 import { Card } from "antd";
 import styled from "styled-components"
 
-
 export const StyledHeader = styled.nav`
     display: flex;
     justify-content: space-between;
